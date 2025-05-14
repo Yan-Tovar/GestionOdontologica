@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sistema de Gestión Odontológica</title>
+    <link rel="stylesheet" type="text/css" href="Vista/css/estilos.css">
+    <script type="text/javascript" src="Vista/jquery/jquery.js"></script>
+    <script type="text/javascript" src="Vista/js/script.js"></script>
+</head>
+<body>
+    <div id="contenedor">
+    <div id="encabezado">
+        <h1>Cancelar Cita</h1>
+    </div>
+    <ul id="menu">
+        <li><a href="index.php">inicio</a> </li>
+        <li><a href="index.php?accion=asignar">Asignar</a> </li>
+        <li><a href="index.php?accion=consultar">Consultar Cita</a> </li>
+        <li><a href="index.php?accion=cancelar" class="activa">Cancelar Cita</a> </li>
+    </ul>
+    <div id="contenido">
+        <div id="contenido">
+        <h2>Cancelar Cita</h2>
+        <form action="index.php?accion=cancelarCita" method="post"
+            id="frmcancelar">
+            <table>
+                <tr>
+                <td>Documento del Paciente </td>
+
+                <td><input type="text" name="cancelarDocumento"
+
+                id="cancelarDocumento"></td>
+                </tr>
+                <tr>
+                <td colspan="2"><input type="submit"
+                name="cancelarConsultar" value="Consultar" id="cancelarConsultar"></td>
+                </tr>
+                <tr>
+                <td colspan="2"><div id="paciente3"></div></td>
+                </tr>
+            </table>
+        </form>
+        </div>
+    </div>
+    </div>
+</body>
+</html>
