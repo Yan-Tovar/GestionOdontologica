@@ -3,11 +3,13 @@
 <head>
     <title>Asignar Cita</title>
     <link rel="stylesheet" type="text/css" href="Vista/css/estilos.css">
-    <script type="text/javascript" src="Vista/jquery/jquery.js"></script>
     <script type="text/javascript" src="Vista/js/script.js"></script>
+    <script type="text/javascript" src="vista/jquery/jquery.js" ></script>
+    <script src="Vista/jquery/jquery-ui-1.12.1.custom/jquery-ui.js" type="text/javascript"></script>
+    <link href="Vista/jquery/jquery-ui-1.12.1.custom/jquery-ui.min.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
-    <div id="contenedor">
+<div id="contenedor">
     <div id="encabezado">
         <h1>Sistema de Gestión Odontológica</h1>
     </div>
@@ -24,15 +26,14 @@
             <table>
                 <tr>
                     <td>Documento del paciente</td>
-                    <td><input type="text" name="asignarDocumento" id="asignarDocumento"></
-                    td>
+                    <td><input type="text" name="asignarDocumento" id="asignarDocumento"></td>
                 </tr>
-               <tr>
-                    <td colspan="2"><input type="button" value="Consultar" name="asignarConsultar"
-                    id="asignarConsultar" onclick="consultarPaciente()">
+                <tr>
+                    <td colspan="2"><input type="button" value="Consultar" name="asignarConsultar" id="asignarConsultar" onclick="consultarPaciente()"></td>
+                </tr>
+                    <tr><td colspan="2">
+                        <div id="paciente"></div>
                     </td>
-                </tr>
-                <tr><td colspan="2"><div id="paciente"></div></td>
                 </tr>
                 <tr>
                     <td>Médico</td>
@@ -82,8 +83,43 @@
                     </td>
                 </tr>
             </table>
-            </form>
+        </form>
+        
     </div>
-    </div>
+</div>
 </body>
 </html>
+<!-- Este es el formulario que no se ha ocultado aún -->
+        <div id="frmPaciente" title="Agregar Nuevo Paciente" >
+            <form id="agregarPaciente">
+                <table>
+                    <tr>
+                        <td>Documento</td>
+                        <td><input type="text" name="PacDocumento" id="PacDocumento"></td>
+                    </tr>
+                    <tr>
+                        <td>Nombres</td>
+                        <td><input type="text" name="PacNombres" id="PacNombres"></td>
+                    </tr>
+                    <tr>
+                        <td>Apellidos</td>
+                        <td><input type="text" name="PacApellidos" id="PacApellidos"></td>
+                    </tr>
+                    <tr>
+                        <td>Fecha de Nacimiento</td>
+                        <td><input type="text" name="PacNacimiento" id="PacNacimiento"></td>
+                    </tr>
+                    <tr>
+                        <td>Sexo</td>
+                        <td>
+                            <select id="pacSexo" name="PacSexo">
+                                <option value="-1"
+                                selected="selected">--Selecione el sexo ---</option>
+                                <option value="M">Masculino</option>
+                                <option value="F">Femenino</option>
+                            </select>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>

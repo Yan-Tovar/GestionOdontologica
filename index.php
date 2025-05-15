@@ -32,7 +32,7 @@ elseif($_GET["accion"] == "consultarCita"){
 elseif($_GET["accion"] == "cancelarCita"){
     $controlador->cancelarCitas($_POST["cancelarDocumento"]);
 }
-elseif($_GET["accion"] == "ConsultarPaciente"){
+elseif($_GET["accion"] == "consultarPaciente"){
     $controlador->consultarPaciente($_GET["documento"]);
 }
 } else {

@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title></title>
-<link rel="stylesheet" type="text/css" href="Vista/css/estilos.css">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="Vista/css/estilos.css">
 </head>
 <body>
     <div id="contenedor">

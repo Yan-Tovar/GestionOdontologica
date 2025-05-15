@@ -2,7 +2,7 @@
 <html>
 <head>
 <title>Infomación General</title>
-<link rel="stylesheet" type="text/css" href="Vista/css/estilos.css">
+    <link rel="stylesheet" type="text/css" href="Vista/css/estilos.css">
 </head>
 <body>
     <div id="contenedor">
