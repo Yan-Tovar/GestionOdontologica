@@ -3,8 +3,12 @@
     <head>
         <meta charset="UTF-8">
         <title></title>
-        <script type="text/javascript" src="Vista/jquery/jquery.js"></script>
-        <script type="text/javascript" src="Vista/js/script.js"></script>
+         <link rel="stylesheet" type="text/css" href="Vista/css/estilos.css">
+        <script type="text/javascript" src="vista/jquery/jquery.js" ></script>
+        <script src="Vista/js/script.js" type="text/javascript"></script>
+        <script src="Vista/jquery/jquery-3.2.1.min.js" type="text/javascript"></script>
+        <script src="Vista/jquery/jquery-ui-1.12.1.custom/jquery-ui.js" type="text/javascript"></script>
+        <link href="Vista/jquery/jquery-ui-1.12.1.custom/jquery-ui.min.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
         <?php
@@ -32,9 +36,9 @@
             else {
         ?>
         <p>El paciente no existe en la base de datos.</p>
-       <input type="button" name="ingPaciente" id="ingPaciente" value="IngresarPaciente" onclick="ingPaciente()">
+        <input type="button" name="ingPaciente" id="ingPaciente" value="IngresarPaciente" onclick="mostrarFormulario()">
         <?php
-            }
-        ?>
+}
+?>
     </body>
 </html>

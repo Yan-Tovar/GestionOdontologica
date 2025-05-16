@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 15-05-2025 a las 05:22:25
+-- Tiempo de generación: 16-05-2025 a las 06:33:19
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.1.25
 
@@ -37,8 +37,16 @@ CREATE TABLE `citas` (
   `CitMedico` char(10) NOT NULL,
   `CitConsultorio` int(3) NOT NULL,
   `CitEstado` enum('Asignada','Cumplida','Solicitada','Cancelada') NOT NULL DEFAULT 'Asignada',
-  `CitObservacion` varchar(30) NOT NULL
+  `CitObservaciones` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Volcado de datos para la tabla `citas`
+--
+
+INSERT INTO `citas` (`CitNumero`, `CitFecha`, `CitHora`, `CitPaciente`, `CitMedico`, `CitConsultorio`, `CitEstado`, `CitObservaciones`) VALUES
+(1, '2025-05-01', '-1', '1080', '12345', 1, 'Solicitada', 'Ninguna'),
+(2, '2025-05-01', '-1', '1080', '12345', 1, 'Cancelada', 'Ninguna');
 
 -- --------------------------------------------------------
 
@@ -58,6 +66,34 @@ CREATE TABLE `consultorios` (
 INSERT INTO `consultorios` (`ConNumero`, `ConNombre`) VALUES
 (1, 'consultas 1'),
 (2, 'Tratamientos 1');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `horas`
+--
+
+CREATE TABLE `horas` (
+  `hora` time DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `horas`
+--
+
+INSERT INTO `horas` (`hora`) VALUES
+('08:00:00'),
+('08:20:00'),
+('08:40:00'),
+('09:00:00'),
+('09:20:00'),
+('09:40:00'),
+('10:00:00'),
+('10:20:00'),
+('10:40:00'),
+('11:00:00'),
+('11:20:00'),
+('11:40:00');
 
 -- --------------------------------------------------------
 
@@ -98,7 +134,8 @@ CREATE TABLE `pacientes` (
 --
 
 INSERT INTO `pacientes` (`PacIdentificacion`, `PacNombres`, `PacApellidos`, `PacFechaNacimiento`, `PacSexo`) VALUES
-('1080', 'Yan', 'Tovar', '2015-06-01', 'M');
+('1080', 'Yan', 'Tovar', '2015-06-01', 'M'),
+('1234', 'Carlos', 'Tovar', '2007-02-07', 'M');
 
 -- --------------------------------------------------------
 
@@ -162,7 +199,7 @@ ALTER TABLE `tratamientos`
 -- AUTO_INCREMENT de la tabla `citas`
 --
 ALTER TABLE `citas`
-  MODIFY `CitNumero` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `CitNumero` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `tratamientos`

@@ -3,8 +3,11 @@
 <head>
     <title>Sistema de Gestión Odontológica</title>
     <link rel="stylesheet" type="text/css" href="Vista/css/estilos.css">
-    <script type="text/javascript" src="Vista/jquery/jquery.js"></script>
-    <script type="text/javascript" src="Vista/js/script.js"></script>
+    <script type="text/javascript" src="vista/jquery/jquery.js" ></script>
+    <script src="Vista/js/script.js" type="text/javascript"></script>
+    <script src="Vista/jquery/jquery-3.2.1.min.js" type="text/javascript"></script>
+    <script src="Vista/jquery/jquery-ui-1.12.1.custom/jquery-ui.js" type="text/javascript"></script>
+    <link href="Vista/jquery/jquery-ui-1.12.1.custom/jquery-ui.min.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
     <div id="contenedor">
@@ -19,26 +22,25 @@
     </ul>
     <div id="contenido">
         <div id="contenido">
-        <h2>Cancelar Cita</h2>
-        <form action="index.php?accion=cancelarCita" method="post"
-            id="frmcancelar">
-            <table>
-                <tr>
-                <td>Documento del Paciente </td>
+            <h2>Cancelar Cita</h2>
+            <form action="index.php?accion=cancelarCita" method="post"
+                id="frmcancelar">
+                <table>
+                    <tr>
+                        <td>Documento del Paciente </td>
 
-                <td><input type="text" name="cancelarDocumento"
+                        <td><input type="text" name="cancelarDocumento"
 
-                id="cancelarDocumento"></td>
-                </tr>
-                <tr>
-                <td colspan="2"><input type="submit"
-                name="cancelarConsultar" value="Consultar" id="cancelarConsultar"></td>
-                </tr>
-                <tr>
-                <td colspan="2"><div id="paciente3"></div></td>
-                </tr>
-            </table>
-        </form>
+                        id="cancelarDocumento"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><input type="button" value="Consultar" onclick="cancelarCita()"></td>
+                        </tr>
+                    <tr>
+                        <td colspan="2"><div id="paciente3"></div></td>
+                    </tr>
+                </table>
+            </form>
         </div>
     </div>
     </div>

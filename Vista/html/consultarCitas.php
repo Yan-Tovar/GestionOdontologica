@@ -24,7 +24,7 @@ and open the template in the editor.
                     <td><?php echo $fila->CitNumero;?></td>
                     <td><?php echo $fila->CitFecha;?></td>
                     <td><?php echo $fila->CitHora;?></td>
-                    <td><a href="#" onclick="confirmarVer(<?php echo $fila->CitNumero; ?>)">Ver</a></td>
+                    <td><a href="index.php?accion=verCita&numero=<?php echo $fila->CitNumero;?>">Ver</a></td>
                 </tr>
                 <?php
             }
