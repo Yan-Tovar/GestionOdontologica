@@ -17,6 +17,9 @@ elseif($_GET["accion"] == "consultar"){
 elseif($_GET["accion"] == "cancelar"){
     $controlador->verPagina('Vista/html/cancelar.php');
 }
+elseif($_GET["accion"] == "consultorio"){
+    $controlador->verPagina('Vista/html/consultorios.php');
+}
 elseif($_GET["accion"] == "guardarCita"){
     $controlador->agregarCita(
     $_POST["asignarDocumento"],
@@ -52,6 +55,9 @@ elseif($_GET["accion"] == "verCita"){
 }
 elseif($_GET["accion"] == "confirmarCancelar"){
     $controlador->confirmarCancelarCita($_GET["numero"]);
+}
+elseif($_GET["accion"] == "listarConsultorio"){
+    $controlador->listarConsultorio();
 }
 } else {
     $controlador->verPagina('Vista/html/inicio.php');

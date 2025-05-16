@@ -62,4 +62,9 @@ public function confirmarCancelarCita($cita){
         echo "Hubo un error al cancelar la cita";
     }
 }
+public function listarConsultorio(){
+    $Consultorios = new Consultorios();
+    $result = $Consultorios->listarConsultorios();
+    require_once 'Vista/html/listarConsultorios.php';
+}
 }

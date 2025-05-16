@@ -3,11 +3,11 @@
 <head>
     <title>Sistema de Gestión Odontológica</title>
     <link rel="stylesheet" type="text/css" href="Vista/css/estilos.css">
+    <link href="Vista/jquery/jquery-ui-1.12.1.custom/jquery-ui.min.css" rel="stylesheet" type="text/css"/>
     <script type="text/javascript" src="vista/jquery/jquery.js" ></script>
     <script src="Vista/js/script.js" type="text/javascript"></script>
     <script src="Vista/jquery/jquery-3.2.1.min.js" type="text/javascript"></script>
     <script src="Vista/jquery/jquery-ui-1.12.1.custom/jquery-ui.js" type="text/javascript"></script>
-    <link href="Vista/jquery/jquery-ui-1.12.1.custom/jquery-ui.min.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="contenedor">
@@ -19,6 +19,7 @@
         <li><a href="index.php?accion=asignar" class="activa">Asignar</a> </li>
         <li><a href="index.php?accion=consultar">Consultar Cita</a> </li>
         <li><a href="index.php?accion=cancelar">Cancelar Cita</a> </li>
+        <li><a href="index.php?accion=consultorio">Consultorios</a></li>
     </ul>
     <div id="contenido">
         <h2>Título de página</h2>
@@ -27,19 +28,19 @@
             <table>
                 <tr>
                     <td>Documento del paciente</td>
-                    <td><input type="text" name="asignarDocumento" id="asignarDocumento"></td>
+                    <td><input type="text" name="asignarDocumento" id="asignarDocumento" required></td>
                 </tr>
                 <tr>
                     <td colspan="2"><input type="button" value="Consultar" name="asignarConsultar" id="asignarConsultar" onclick="consultarPaciente()"></td>
                 </tr>
-                    <tr><td colspan="2">
-                        <div id="paciente"></div>
-                    </td>
+                <tr><td colspan="2">
+                    <div id="paciente"></div>
+                </td>
                 </tr>
                 <tr>
                     <td>Médico</td>
                     <td>
-                        <select id="medico" name="medico" onchange="cargarHoras()">
+                        <select id="medico" name="medico" onchange="cargarHoras()" required>
                             <option value="-1" selected="selected">---Selecione el
                             Médico</option>
                             <?php
@@ -60,15 +61,6 @@
                     <td>Fecha</td>
                     <td>
                     <input type="date" id="fecha" name="fecha" onchange="cargarHoras()">
-                    </td>
-                </tr>
-                <tr>
-                    <td>Hora</td>
-                    <td>
-                        <select id="hora" name="hora" onmousedown="seleccionarHora()">
-                            <option value="-1" selected="selected">---Seleccione
-                            la hora ---</option>
-                        </select>
                     </td>
                 </tr>
                 <tr>
@@ -94,14 +86,22 @@
                     </td>
                 </tr>
                 <tr>
+                    <td>Hora</td>
+                    <td>
+                        <select id="hora" name="hora" onmousedown="seleccionarHora()">
+                            <option value="-1" selected="selected">---Seleccione
+                            la hora ---</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
                     <td colspan="2">
                         <input type="submit" name="asignarEnviar" value="Enviar"
                         id="asignarEnviar">
                     </td>
                 </tr>
             </table>
-        </form>
-        
+        </form> 
     </div>
 </div>
 <!-- Este es el formulario que se oculta -->
@@ -135,7 +135,7 @@
 
                 <td>Fecha de Nacimiento</td>
 
-                <td><input type="text" name="PacNacimiento"
+                <td><input type="date" name="PacNacimiento"
 
                 id="PacNacimiento"></td>
             </tr>

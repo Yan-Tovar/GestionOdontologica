@@ -31,7 +31,7 @@ function cancelar(){
     $(this).dialog('close');
 }
 function cargarHoras(){
-    if( ($("#medico").val() == -1 ) || ($("#fecha").val() == "")){
+    if( ($("#medico").val() == -1 ) || ($("#fecha").val() == "") || ($("#consultorio").val() == -1)){
         $("#hora").html("<option value='-1' selected='selected'>--Selecione la hora </option>")
     } else {
         queryString = "medico="+$("#medico").val()+"&fecha="+$("#fecha").val();
@@ -64,4 +64,9 @@ function confirmarCancelar(numero){
         });
     }
     $("#cancelarConsultar").trigger("click");
+}
+function listarConsultorio(){
+    var url = "index.php?accion=listarConsultorio";
+    $("#listado").load(url,function(){
+    });
 }
