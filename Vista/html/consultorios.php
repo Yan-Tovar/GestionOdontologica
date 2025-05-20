@@ -18,8 +18,8 @@
         <li><a href="index.php">inicio</a> </li>
         <li><a href="index.php?accion=asignar">Asignar</a> </li>
         <li><a href="index.php?accion=consultar">Consultar Cita</a> </li>
-        <li><a href="index.php?accion=cancelar">Cancelar Cita</a> </li>
-        <li><a href="index.php?accion=consultorio">Consultorios</a></li>
+        <li><a href="index.php?accion=consultorio"><a href="index.php?accion=cancelar">Cancelar Cita</a> </li>
+        <li onclick="listarConsultorio()"><a href="index.php?accion=consultorio"></a>Consultorios</li>
     </ul>
     <div id="contenido">
         <div id="contenido">
@@ -27,7 +27,7 @@
             <table>
                 <tr>
                     <td>
-                        <input type="submit" value="Listar" name="listarConsultorio"id="listarConsultorio" onclick="listarConsultorio()">
+                        <input type="submit" value="Agregar" name="agregarConsultorio"id="agregarConsultorio" onclick="agregarConsultorio()">
                     </td>
                 </tr>
                 <tr>
@@ -40,5 +40,20 @@
         </div>
     </div>
     </div>
+<!-- Este es el formulario que se oculta -->
+<div id="frmConsultorio" title="Agregar Nuevo Consultorio">
+    <form id="agregarConsultorios">
+        <table>
+            <tr>
+                <td>Numero</td>
+                <td><input type="number" name="ConNumero" id="ConNumero" required></td>
+            </tr>
+            <tr>
+                <td>Nombre</td>
+                <td><input type="text" name="ConNombre" id="ConNombre" required></td>
+            </tr>
+        </table>
+    </form>
+</div>
 </body>
 </html>

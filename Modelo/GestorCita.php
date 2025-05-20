@@ -108,5 +108,26 @@ public function cancelarCita($cita){
     $conexion->cerrar();
     return $filasAfectadas;
 }
+public function listarConsultorios(){
+        $conexion = new Conexion();
+        $conexion->abrir();
+        $sql = "SELECT ConNumero, ConNombre FROM consultorios";
+        $conexion->consulta($sql);
+        $result = $conexion->obtenerResult();
+        $conexion->cerrar();
+        return $result ;
+    }
+public function agregarConsultorio(Consultorio $consultorio){
+    $conexion = new Conexion();
+    $conexion->abrir();
+    $numero = $consultorio->ConsultorioNumero();
+    $nombre = $consultorio->ConsultorioNombre();
+    $sql = "INSERT INTO consultorios VALUES (
+    '$numero','$nombre')";
+    $conexion->consulta($sql);
+    $filasAfectadas = $conexion->obtenerFilasAfectadas();
+    $conexion->cerrar();
+    return $filasAfectadas;
+}
 }
 ?>

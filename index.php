@@ -59,6 +59,12 @@ elseif($_GET["accion"] == "confirmarCancelar"){
 elseif($_GET["accion"] == "listarConsultorio"){
     $controlador->listarConsultorio();
 }
+elseif($_GET["accion"] == "ingresarConsultorio"){
+    $controlador->agregarConsultorio(
+        $_GET["ConNombre"],
+        $_GET["ConNumero"]
+        );
+}
 } else {
     $controlador->verPagina('Vista/html/inicio.php');
 }

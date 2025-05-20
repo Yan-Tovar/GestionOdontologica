@@ -63,8 +63,18 @@ public function confirmarCancelarCita($cita){
     }
 }
 public function listarConsultorio(){
-    $Consultorios = new Consultorios();
-    $result = $Consultorios->listarConsultorios();
+    $GestorCita = new GestorCita();
+    $result = $GestorCita->listarConsultorios();
     require_once 'Vista/html/listarConsultorios.php';
+}
+public function agregarConsultorio($nom,$num){
+    $paciente = new Consultorio($nom,$num);
+    $gestorCita = new GestorCita();
+    $registros = $gestorCita->agregarConsultorio($paciente);
+    if($registros > 0){
+        echo "Se insertó el consultorio con exito";
+    } else {
+        echo "Error al grabar el consultorio";
+    }
 }
 }

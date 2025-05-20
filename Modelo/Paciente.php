@@ -28,3 +28,17 @@ public function obtenerSexo(){
     return $this->sexo;
 }
 }
+class Consultorio {
+    private $nombre;
+    private $numero;
+public function __construct($nom,$num) {
+    $this->nombre=$nom;
+    $this->numero=$num;
+}
+public function consultorioNombre(){
+    return $this->nombre;
+}
+public function consultorioNumero(){
+    return $this->numero;
+}
+}

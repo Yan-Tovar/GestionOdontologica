@@ -9,6 +9,22 @@ $(document).ready(function(){
             "Cancelar":cancelar
         }
     });
+    $("#frmConsultorio").dialog({
+        autoOpen: false,
+        height: 310,
+        width: 400,
+        modal: true,
+        buttons: {
+            "Agregar":insertarConsultorio,
+            "Cancelar":cancelar
+        }
+    });
+    $("#frmEditar").dialog({
+        autoOpen: false,
+        height: 310,
+        width: 400,
+        modal: true,
+    });
 });
 function consultarPaciente(){
     var url = "index.php?accion=consultarPaciente&documento=" +
@@ -69,4 +85,21 @@ function listarConsultorio(){
     var url = "index.php?accion=listarConsultorio";
     $("#listado").load(url,function(){
     });
+}
+function agregarConsultorio(){
+    $("#frmConsultorio").dialog('open');
+}
+function insertarConsultorio(numero){
+    queryString = $("#agregarConsultorios").serialize();
+    url = "index.php?accion=ingresarConsultorio&" + queryString ;
+    $("#listado").load(url);
+    $("#frmConsultorio").dialog('close');
+}
+function mostrarFormularioE(numero, nombre) {
+    // Llenar los campos del formulario
+    $('#inputNumero').attr("value",numero);
+    $('#inputNombre').val(nombre);
+
+    // Mostrar el formulario tipo diálogo
+    $('#frmEditar').dialog('open');
 }
