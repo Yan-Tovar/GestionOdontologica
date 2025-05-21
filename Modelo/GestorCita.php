@@ -129,5 +129,25 @@ public function agregarConsultorio(Consultorio $consultorio){
     $conexion->cerrar();
     return $filasAfectadas;
 }
+public function editarConsultorio($num,$nom){
+    $conexion = new Conexion();
+    $conexion->abrir();
+    $sql = "UPDATE consultorios SET ConNumero = '$num', ConNombre = '$nom' "
+    . " WHERE ConNumero = $num ";
+    $conexion->consulta($sql);
+    $filasAfectadas = $conexion->obtenerFilasAfectadas();
+    $conexion->cerrar();
+    return $filasAfectadas;
+}
+public function eliminarConsultorio($num){
+    $conexion = new Conexion();
+    $conexion->abrir();
+    $sql = "DELETE FROM consultorios "
+    . " WHERE ConNumero = $num ";
+    $conexion->consulta($sql);
+    $filasAfectadas = $conexion->obtenerFilasAfectadas();
+    $conexion->cerrar();
+    return $filasAfectadas;
+}
 }
 ?>

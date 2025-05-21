@@ -65,6 +65,18 @@ elseif($_GET["accion"] == "ingresarConsultorio"){
         $_GET["ConNumero"]
         );
 }
+elseif($_GET["accion"] == "editarConsultorio"){
+    $numero = $_GET["inputNumero"];
+    $nombre = $_GET["inputNombre"];
+    $controlador->editarC(
+        $numero,
+        $nombre
+        );
+}
+elseif ($_GET["accion"] == "eliminarConsultorio") {
+    $id = $_GET["id"];
+    $controlador->eliminarC($id);
+}
 } else {
     $controlador->verPagina('Vista/html/inicio.php');
 }

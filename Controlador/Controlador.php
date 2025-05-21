@@ -67,14 +67,33 @@ public function listarConsultorio(){
     $result = $GestorCita->listarConsultorios();
     require_once 'Vista/html/listarConsultorios.php';
 }
-public function agregarConsultorio($nom,$num){
-    $paciente = new Consultorio($nom,$num);
+public function agregarConsultorio($num,$nom){
+    // La clase 'Consultorio' está dentro de Modelo/Paciente.php
+    $paciente = new Consultorio($num,$nom); 
     $gestorCita = new GestorCita();
     $registros = $gestorCita->agregarConsultorio($paciente);
     if($registros > 0){
         echo "Se insertó el consultorio con exito";
     } else {
         echo "Error al grabar el consultorio";
+    }
+}
+public function editarC($num,$nom){
+    $gestorCita = new GestorCita();
+    $registros = $gestorCita->editarConsultorio($num,$nom);
+    if($registros > 0){
+        echo "Se editó el consultorio con exito";
+    } else {
+        echo "Error al editar el consultorio";
+    }
+}
+public function eliminarC($num){
+    $gestorCita = new GestorCita();
+    $registros = $gestorCita->eliminarConsultorio($num);
+    if($registros > 0){
+        echo "Se eliminó el consultorio con exito";
+    } else {
+        echo "Error al eliminar el consultorio";
     }
 }
 }

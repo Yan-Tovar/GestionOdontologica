@@ -24,6 +24,10 @@ $(document).ready(function(){
         height: 310,
         width: 400,
         modal: true,
+        buttons: {
+            "Cambiar":editarConsultorio,
+            "Cancelar":cancelar
+        }
     });
 });
 function consultarPaciente(){
@@ -89,7 +93,7 @@ function listarConsultorio(){
 function agregarConsultorio(){
     $("#frmConsultorio").dialog('open');
 }
-function insertarConsultorio(numero){
+function insertarConsultorio(){
     queryString = $("#agregarConsultorios").serialize();
     url = "index.php?accion=ingresarConsultorio&" + queryString ;
     $("#listado").load(url);
@@ -102,4 +106,22 @@ function mostrarFormularioE(numero, nombre) {
 
     // Mostrar el formulario tipo diálogo
     $('#frmEditar').dialog('open');
+}
+function editarConsultorio(numero, nombre){
+    numero = $("#inputNumero").val();
+    nombre = $("#inputNombre").val();
+    url = "index.php?accion=editarConsultorio&inputNumero=" + encodeURIComponent(numero) + "&inputNombre=" + encodeURIComponent(nombre);
+    $("#listado").load(url);
+    $("#frmEditar").dialog('close');
+
+}
+function eliminarC(numero){
+    if (numero) {
+        if (confirm('¿Está seguro de Eliminar el Consultorio?')) {
+            let url = "index.php?accion=eliminarConsultorio&id=" + numero ;
+            $("#listado").load(url);
+        }
+    } else {
+        alert('No se ha podido encontrar el ID');
+    }
 }

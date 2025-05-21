@@ -19,7 +19,7 @@
         <li><a href="index.php?accion=asignar" class="activa">Asignar</a> </li>
         <li><a href="index.php?accion=consultar">Consultar Cita</a> </li>
         <li><a href="index.php?accion=cancelar">Cancelar Cita</a> </li>
-        <li><a href="index.php?accion=consultorio">Consultorios</a></li>
+        <li><a href="index.php?accion=listarConsultorio">Consultorio</a></li>
     </ul>
     <div id="contenido">
         <h2>Título de página</h2>
