@@ -89,11 +89,16 @@ public function editarC($num,$nom){
 }
 public function eliminarC($num){
     $gestorCita = new GestorCita();
-    $registros = $gestorCita->eliminarConsultorio($num);
-    if($registros > 0){
-        echo "Se eliminó el consultorio con exito";
-    } else {
-        echo "Error al eliminar el consultorio";
+    $registros = $gestorCita->validarConsultorioForaneo($num);
+    if($registros>=1){   
+        echo"No se puede eliminar el consultorio porque tiene citas asociadas";
+    }else{
+        $registros = $gestorCita->eliminarConsultorio($num);
+        if($registros > 0){
+            echo "Se eliminó el consultorio con exito";
+        } else {
+            echo "Error al eliminar el consultorio";
+        }
     }
 }
 }

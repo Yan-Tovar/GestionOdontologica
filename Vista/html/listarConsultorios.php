@@ -94,7 +94,7 @@
         <table>
             <tr>
                 <td>Numero</td>
-                <td><input type="text" name="inputNumero" id="inputNumero" required></td>
+                <td><input type="text" name="inputNumero" id="inputNumero" disabled></td>
             </tr>
             <tr>
                 <td>Nombre</td>

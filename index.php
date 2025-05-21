@@ -66,11 +66,9 @@ elseif($_GET["accion"] == "ingresarConsultorio"){
         );
 }
 elseif($_GET["accion"] == "editarConsultorio"){
-    $numero = $_GET["inputNumero"];
-    $nombre = $_GET["inputNombre"];
     $controlador->editarC(
-        $numero,
-        $nombre
+        $_GET["inputNumero"],
+        $_GET["inputNombre"]
         );
 }
 elseif ($_GET["accion"] == "eliminarConsultorio") {

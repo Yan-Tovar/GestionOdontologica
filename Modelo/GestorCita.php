@@ -139,6 +139,18 @@ public function editarConsultorio($num,$nom){
     $conexion->cerrar();
     return $filasAfectadas;
 }
+public function validarConsultorioForaneo($num){
+    $conexion = new Conexion();
+    $conexion->abrir();
+
+    $sql = "SELECT COUNT(*) AS cantidad FROM citas WHERE CitConsultorio = $num;";
+    $conexion->consulta($sql);
+    $fila = $conexion->obtenerUnaFila();
+
+    $conexion->cerrar();
+
+    return $fila['cantidad'];
+}
 public function eliminarConsultorio($num){
     $conexion = new Conexion();
     $conexion->abrir();
