@@ -4,7 +4,6 @@ class Conexion {
     private $sql;
     private $result;
     private $filasAfectadas;
-    private $resultado;
     private $citaId;
 public function abrir(){
     $this->mySQLI=new mysqli("localhost","root","","citas");
@@ -21,9 +20,8 @@ public function consulta($sql){
     $this->sql = $sql;
     $this->result = $this->mySQLI->query($this->sql);
     $this->filasAfectadas = $this->mySQLI->affected_rows;
-    $this->resultado = $this->mySQLI->query($sql);
     $this->citaId = $this->mySQLI->insert_id;
-    return $this->resultado;
+    return $this->result;
 }
 
 public function obtenerResult(){
@@ -33,8 +31,8 @@ public function obtenerFilasAfectadas(){
     return $this->filasAfectadas;
 }
  public function obtenerUnaFila() {
-        if ($this->resultado) {
-            return $this->resultado->fetch_assoc();
+        if ($this->result) {
+            return $this->result->fetch_assoc();
         }
         return null;
     }

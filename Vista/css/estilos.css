@@ -12,7 +12,7 @@ width : 900px ;
 #encabezado {
 width: 900px;
 height: 150px;
-background : url('../imagenes/banner1.jpeg') no-repeat ;
+background : url('../imagenes/banner1.jpg') no-repeat ;
 border: #d3d3d3 1px solid ;
 }
 #encabezado h1 {
@@ -55,4 +55,11 @@ background-color: #7092be;
 }
 .activa{
  background-color: #7092be;
+}
+.contenedorInicial{
+    background : url('../imagenes/gestionOdontologica.png') no-repeat ;
+    border: #ee1b1b 1px solid ;
+    color: red ;
+    background-color: red;
+    
 }

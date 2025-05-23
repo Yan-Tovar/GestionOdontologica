@@ -7,7 +7,7 @@
 <body>
     <div id="contenedor">
     <div id="encabezado">
-        <h1>Sistema de Gestión Odontológica</h1>
+        <h1>Sistema de <br>Gestión <br>Odontológica</h1>
     </div>
     <ul id="menu">
         <li><a href="index.php">inicio</a> </li>
