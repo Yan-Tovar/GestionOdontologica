@@ -1,6 +1,21 @@
-
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="Vista/css/estilos.css">
+</head>
+<body>
+    <div id="contenedor">
+        <div id="encabezado">
+            <h1>Sistema de Gestión Odontológica</h1>
+        </div>
+        <ul id="menu">
+            <li onclick="history.back()">Volver atrás</li>
+        </ul>
+        <div id="contenido">
             <?php $fila = $result->fetch_object();?>
             <h2>Información Cita</h2>
+            <a href="index.php?accion=citapdf">Ver pdf</a>
             <table>
                 <tr>
                     <th colspan="2">Datos del Paciente</th>
@@ -52,4 +67,11 @@
                     <td><?php echo $fila->CitObservaciones;?></td>
                 </tr>
             </table>
+        </div>
+    </div>
+</body>
+</html>
+<?php 
+require_once "Vista/html/Citapdf.php"
+?>
   

@@ -97,6 +97,60 @@ if(isset($value)){
         </table>
     </div>
 </div>
+
+<!-- Este es el formulario que se oculta -->
+<div id="frmPaciente" title="Agregar Nuevo Paciente">
+    <form id="agregarPaciente">
+        <table>
+            <tr>
+                <td>Documento</td>
+
+                <td><input type="text" name="PacDocumento"
+
+                id="PacDocumento"></td>
+            </tr>
+            <tr>
+
+                <td>Nombres</td>
+
+                <td><input type="text" name="PacNombres"
+
+                id="PacNombres"></td>
+            </tr>
+            <tr>
+
+                <td>Apellidos</td>
+
+                <td><input type="text" name="PacApellidos"
+
+                id="PacApellidos"></td>
+            </tr>
+            <tr>
+
+                <td>Fecha de Nacimiento</td>
+
+                <td><input type="date" name="PacNacimiento"
+
+                id="PacNacimiento"></td>
+            </tr>
+            <tr>
+
+                <td>Sexo</td>
+
+                <td>
+
+                <select id="pacSexo" name="PacSexo">
+                    <option value="-1"
+                    selected="selected">--Selecione el sexo ---</option>
+                    <option value="M">Masculino</option>
+                    <option value="F">Femenino</option>
+
+                </select>
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
 </body>
 </html>
 <?php

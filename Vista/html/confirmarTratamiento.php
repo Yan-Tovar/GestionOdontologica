@@ -10,9 +10,7 @@
             <h1>Sistema de Gestión Odontológica</h1>
         </div>
         <ul id="menu">
-            <li><a href="index.php?accion=Minicio">inicio</a> </li>
-            <li><a href="index.php?accion=MverCitas">Citas</a> </li>
-            <li><a href="index.php?accion=asignarTratamientos"class="activa">Tratamientos</a></li>
+            <li onclick="history.back()">Volver atrás</li>
         </ul>
         <div id="contenido">
             <?php $fila = $result->fetch_object();?>

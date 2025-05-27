@@ -7,16 +7,18 @@
     <link rel="stylesheet" type="text/css" href="Vista/css/estilos.css">
 </head>
 <body>
+    <br><br><br>
 <div class="contenedorLogin">
     <div class="contenedorLogin2">
         Iniciar Sesión
     </div>
+    <br>
     <form action="index.php?accion=iniciarSesion" method="post" class="form">
         Ingrese su correo:<br>
-        <input type="email" name="correo" id="correo" required><br>
+        <input type="email" name="correo" id="correo" required placeholder="ejemplo@gmail.com"><br>
 
         Ingrese su contraseña:<br>
-        <input type="password" name="contrasena" id="contrasena" required><br>
+        <input type="password" name="contrasena" id="contrasena" required placeholder="**********"><br>
 
         Seleccione su rol:<br>
         <select name="rol" id="rol" required>
