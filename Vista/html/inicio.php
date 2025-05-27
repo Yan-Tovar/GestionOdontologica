@@ -1,3 +1,7 @@
+<?php
+$value=$_SESSION['us_id'];
+if(isset($value)){
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,11 +14,12 @@
         <h1>Sistema de Gestión Odontológica</h1>
     </div>
     <ul id="menu">
-        <li><a href="index.php" class="activa">inicio</a> </li>
+        <li><a href="index.php?accion=inicio" class="activa">inicio</a> </li>
         <li><a href="index.php?accion=asignar">Asignar</a> </li>
         <li><a href="index.php?accion=consultar">Consultar Cita</a> </li>
         <li><a href="index.php?accion=cancelar">Cancelar Cita</a> </li>
         <li><a href="index.php?accion=listarConsultorio">Consultorio</a></li>
+        <li><a href="index.php?accion=AasignarTratamientos">Tratamientos</a></li>
     </ul>
     <div id="contenido">
         <h2>Información General</h2>
@@ -26,9 +31,19 @@
             <li>Asignar cita</li>
             <li>Consultar cita</li>
             <li>Cancelar cita</li>
+            <li>Administrar Consultorios</li>
+            <li>Administrar Tratamientos</li>
         </ul>
         </p>
+        <a href="index.php?accion=cerrarSesion"> 
+            <button>Cerrar Sesion</button>
+        </a>
     </div>
     </div>
 </body>
 </html>
+<?php
+}else{
+    header("Location: index.php");
+}
+?>

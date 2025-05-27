@@ -1,3 +1,8 @@
+<?php
+$value=$_SESSION['us_id'];
+if(isset($value)){
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -25,7 +30,6 @@
                 <td><?php echo $fila->PacIdentificacion;?></td>
               <td><?php echo $fila->PacNombres . " ". $fila->PacApellidos;?></td>
                 <td><?php echo $fila->PacSexo;?></td>
-                <td>Ver</td>
             </tr>
             <?php
                 }
@@ -42,3 +46,8 @@
 ?>
     </body>
 </html>
+<?php
+}else{
+    header("Location: index.php");
+}
+?>

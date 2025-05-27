@@ -34,7 +34,7 @@ and open the template in the editor.
         }
         else {
         ?>
-            <p>El paciente no tiene citas asignadas</p>
+            <p>No hay citas asignadas</p>
         <?php
         }
         ?>

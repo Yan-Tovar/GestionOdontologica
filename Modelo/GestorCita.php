@@ -43,6 +43,27 @@ public function consultarCitasPorDocumento($doc){
     $conexion->cerrar();
     return $result ;
 }
+public function consultarCitasMPorDocumento($doc){
+    $conexion = new Conexion();
+    $conexion->abrir();
+    $sql = "SELECT * FROM citas "
+    . "WHERE CitMedico = '$doc' "
+    . " AND CitEstado = 'Solicitada' ";
+    $conexion->consulta($sql);
+    $result = $conexion->obtenerResult();
+    $conexion->cerrar();
+    return $result ;
+}
+public function consultarTratamientosPorDocumento($doc){
+    $conexion = new Conexion();
+    $conexion->abrir();
+    $sql = "SELECT * FROM tratamientos "
+    . "WHERE TraPaciente = '$doc' ";
+    $conexion->consulta($sql);
+    $result = $conexion->obtenerResult();
+    $conexion->cerrar();
+    return $result ;
+}
 public function consultarPaciente($doc){
     $conexion = new Conexion();
     $conexion->abrir();
@@ -139,6 +160,18 @@ public function editarConsultorio($num,$nom){
     $conexion->cerrar();
     return $filasAfectadas;
 }
+public function editarTratamiento($num,$fecA, $des, $fecI, $fecF, $obs, $pac){
+    $conexion = new Conexion();
+    $conexion->abrir();
+    $sql = "UPDATE tratamientos SET TraNumero = '$num', TraFechaAsignado = '$fecA'
+    , TraDescripcion = '$des', TraFechaInicio = '$fecI', TraFechaFin = '$fecF'
+    , TraObservaciones = '$obs', TraPaciente = '$pac' "
+    . " WHERE TraNumero = $num ";
+    $conexion->consulta($sql);
+    $filasAfectadas = $conexion->obtenerFilasAfectadas();
+    $conexion->cerrar();
+    return $filasAfectadas;
+}
 public function validarConsultorioForaneo($num){
     $conexion = new Conexion();
     $conexion->abrir();
@@ -156,6 +189,16 @@ public function eliminarConsultorio($num){
     $conexion->abrir();
     $sql = "DELETE FROM consultorios "
     . " WHERE ConNumero = $num ";
+    $conexion->consulta($sql);
+    $filasAfectadas = $conexion->obtenerFilasAfectadas();
+    $conexion->cerrar();
+    return $filasAfectadas;
+}
+public function eliminarTratamiento($num){
+    $conexion = new Conexion();
+    $conexion->abrir();
+    $sql = "DELETE FROM tratamientos "
+    . " WHERE TraNumero = '$num' ";
     $conexion->consulta($sql);
     $filasAfectadas = $conexion->obtenerFilasAfectadas();
     $conexion->cerrar();

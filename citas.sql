@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-05-2025 a las 06:33:19
+-- Tiempo de generación: 27-05-2025 a las 17:23:51
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.1.25
 
@@ -22,6 +22,27 @@ SET time_zone = "+00:00";
 --
 CREATE DATABASE IF NOT EXISTS `citas` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 USE `citas`;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `administradores`
+--
+
+CREATE TABLE `administradores` (
+  `AdmIdentificacion` int(11) NOT NULL,
+  `AdmCorreo` varchar(100) NOT NULL,
+  `AdmContrasena` varchar(30) NOT NULL,
+  `AdmNombres` varchar(30) NOT NULL,
+  `AdmApellidos` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `administradores`
+--
+
+INSERT INTO `administradores` (`AdmIdentificacion`, `AdmCorreo`, `AdmContrasena`, `AdmNombres`, `AdmApellidos`) VALUES
+(1, 'admi@gmail.com', 'a1', 'Administrador', '');
 
 -- --------------------------------------------------------
 
@@ -45,8 +66,7 @@ CREATE TABLE `citas` (
 --
 
 INSERT INTO `citas` (`CitNumero`, `CitFecha`, `CitHora`, `CitPaciente`, `CitMedico`, `CitConsultorio`, `CitEstado`, `CitObservaciones`) VALUES
-(1, '2025-05-01', '-1', '1080', '12345', 1, 'Solicitada', 'Ninguna'),
-(2, '2025-05-01', '-1', '1080', '12345', 1, 'Cancelada', 'Ninguna');
+(1, '2025-05-01', '8:00', '1080', '12345', 1, 'Solicitada', 'Ninguna');
 
 -- --------------------------------------------------------
 
@@ -64,8 +84,9 @@ CREATE TABLE `consultorios` (
 --
 
 INSERT INTO `consultorios` (`ConNumero`, `ConNombre`) VALUES
-(1, 'consultas 1'),
-(2, 'Tratamientos 1');
+(1, 'consultorio 1'),
+(2, 'Consultorio 2'),
+(3, 'consultorio 3');
 
 -- --------------------------------------------------------
 
@@ -103,6 +124,8 @@ INSERT INTO `horas` (`hora`) VALUES
 
 CREATE TABLE `medicos` (
   `MedIdentificacion` char(10) NOT NULL,
+  `MedCorreo` varchar(100) NOT NULL,
+  `MedContrasena` varchar(50) NOT NULL,
   `MedNombres` varchar(50) NOT NULL,
   `MedApellidos` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
@@ -111,9 +134,8 @@ CREATE TABLE `medicos` (
 -- Volcado de datos para la tabla `medicos`
 --
 
-INSERT INTO `medicos` (`MedIdentificacion`, `MedNombres`, `MedApellidos`) VALUES
-('12345', 'Pepito', 'Perez'),
-('67890', 'Pepita', 'Mendieta');
+INSERT INTO `medicos` (`MedIdentificacion`, `MedCorreo`, `MedContrasena`, `MedNombres`, `MedApellidos`) VALUES
+('12345', 'pepi@gmail.com', 'p1', 'Pepito', 'Perez');
 
 -- --------------------------------------------------------
 
@@ -122,6 +144,8 @@ INSERT INTO `medicos` (`MedIdentificacion`, `MedNombres`, `MedApellidos`) VALUES
 --
 
 CREATE TABLE `pacientes` (
+  `PacCorreo` varchar(100) NOT NULL,
+  `PacContrasena` varchar(50) NOT NULL,
   `PacIdentificacion` char(10) NOT NULL,
   `PacNombres` varchar(50) NOT NULL,
   `PacApellidos` varchar(50) DEFAULT NULL,
@@ -133,9 +157,8 @@ CREATE TABLE `pacientes` (
 -- Volcado de datos para la tabla `pacientes`
 --
 
-INSERT INTO `pacientes` (`PacIdentificacion`, `PacNombres`, `PacApellidos`, `PacFechaNacimiento`, `PacSexo`) VALUES
-('1080', 'Yan', 'Tovar', '2015-06-01', 'M'),
-('1234', 'Carlos', 'Tovar', '2007-02-07', 'M');
+INSERT INTO `pacientes` (`PacCorreo`, `PacContrasena`, `PacIdentificacion`, `PacNombres`, `PacApellidos`, `PacFechaNacimiento`, `PacSexo`) VALUES
+('yan@gmail.com', 'y1', '1080', 'Yan', 'Tovar', '2015-06-01', 'M');
 
 -- --------------------------------------------------------
 
@@ -154,8 +177,31 @@ CREATE TABLE `tratamientos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
+-- Volcado de datos para la tabla `tratamientos`
+--
+
+INSERT INTO `tratamientos` (`TraNumero`, `TraFechaAsignado`, `TraDescripcion`, `TraFechaInicio`, `TraFechaFin`, `TraObservaciones`, `TraPaciente`) VALUES
+(1, '2025-05-01', 'Tratamiento editado', '2025-05-01', '2025-05-30', 'Ninguna', '1080'),
+(6, '2025-05-01', 'acetaminofen', '2025-05-24', '2025-05-31', 'ninguna', '1080'),
+(7, '2025-05-01', 'acetaminofen', '2025-05-25', '2025-05-31', 'ninguna', '1080'),
+(8, '2025-05-01', 'acetaminofen', '2025-05-25', '2025-05-31', 'ninguna', '1080'),
+(9, '2025-05-01', 'acetaminofen', '2025-05-25', '2025-05-31', 'ninguna', '1080'),
+(10, '2025-05-01', 'acetaminofen', '2025-05-25', '2025-05-31', 'ninguna', '1080'),
+(11, '2025-05-01', 'acetaminofen', '2025-05-25', '2025-05-31', 'ninguna', '1080'),
+(12, '2025-05-01', 'acetaminofen', '2025-05-25', '2025-05-31', 'ninguna', '1080'),
+(13, '2025-05-01', 'acetaminofen', '2025-05-25', '2025-05-31', 'ninguna', '1080'),
+(15, '2025-05-01', 'acetaminofen', '2025-05-25', '2025-05-31', 'ninguna', '1080'),
+(16, '2025-05-01', 'acetaminofen', '2025-05-25', '2025-05-31', 'ninguna', '1080');
+
+--
 -- Índices para tablas volcadas
 --
+
+--
+-- Indices de la tabla `administradores`
+--
+ALTER TABLE `administradores`
+  ADD PRIMARY KEY (`AdmIdentificacion`);
 
 --
 -- Indices de la tabla `citas`
@@ -199,13 +245,13 @@ ALTER TABLE `tratamientos`
 -- AUTO_INCREMENT de la tabla `citas`
 --
 ALTER TABLE `citas`
-  MODIFY `CitNumero` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `CitNumero` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `tratamientos`
 --
 ALTER TABLE `tratamientos`
-  MODIFY `TraNumero` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `TraNumero` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- Restricciones para tablas volcadas
