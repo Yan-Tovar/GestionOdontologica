@@ -20,6 +20,7 @@ if(isset($value)){
         <li><a href="index.php?accion=cancelar">Cancelar Cita</a> </li>
         <li><a href="index.php?accion=listarConsultorio">Consultorio</a></li>
         <li><a href="index.php?accion=AasignarTratamientos">Tratamientos</a></li>
+        <li><a href="index.php?accion=descargarCitas">Excel Citas</a></li>
     </ul>
     <div id="contenido">
         <h2>Información General</h2>
@@ -35,6 +36,9 @@ if(isset($value)){
             <li>Administrar Tratamientos</li>
         </ul>
         </p>
+         <a href="index.php?accion=registrarUsuario">
+            <button>Registrar Usuario</button>
+        </a>
         <a href="index.php?accion=cerrarSesion"> 
             <button>Cerrar Sesion</button>
         </a>

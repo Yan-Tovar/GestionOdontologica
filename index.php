@@ -1,4 +1,6 @@
 <?php
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 require_once 'Controlador/Controlador.php';
 require_once 'Modelo/GestorUsuario.php';
 require_once 'Modelo/Usuario.php';
@@ -8,7 +10,9 @@ require_once 'Modelo/Paciente.php';
 require_once 'Modelo/Conexion.php';
 require_once 'Modelo/GestorTratamiento.php';
 require_once 'Modelo/Tratamiento.php';
-
+require 'Vista/PHPMailer/Exception.php';
+require 'Vista/PHPMailer/PHPMailer.php';
+require 'Vista/PHPMailer/SMTP.php';
 
 
 $controlador = new Controlador();
@@ -19,6 +23,9 @@ if($_GET["accion"] == "asignar"){
 }
 elseif($_GET["accion"] == "login"){
     $controlador->verPagina('Vista/html/login.php');
+}
+elseif($_GET["accion"] == "registrarUsuario"){
+    $controlador->verPagina('Vista/html/registrar.php');
 }
 elseif($_GET["accion"] == "inicio"){
     $controlador->verPagina('Vista/html/inicio.php');
@@ -69,6 +76,26 @@ elseif($_GET["accion"] == "iniciarSesion"){
             echo "Debe seleccionar un rol";
     }   
 }
+elseif($_GET["accion"] == "nuevoUsuario"){
+    $contrasena = $_POST["contrasena"];
+    $confirmarContrasena = $_POST["confirmarContrasena"];
+    if($contrasena != $confirmarContrasena)   {
+        echo "<script>alert('Las contraseñas no coinciden');</script>";
+        $controlador->verPagina('Vista/html/registrar.php');
+    }else{
+        $rol = $_POST["rol"];
+        // switch ($rol) {
+        //     case "medico":
+        //         $controlador->registrarM($_POST["correo"], $_POST["contrasena"]);
+        //         break;
+        //     case "administrador":
+        //         $controlador->registrarA($_POST["correo"], $_POST["contrasena"]);
+        //         break;
+        //     default:
+        //         echo "Debe seleccionar un rol";
+        // }
+    }
+}
 elseif($_GET["accion"] == "cerrarSesion"){
     $controlador->cerrarSesion();
 }
@@ -94,6 +121,9 @@ $_POST["asignarDocumento"],);
 elseif($_GET["accion"] == "consultarCita"){
     $controlador->consultarCitas($_GET["consultarDocumento"]);
 }
+elseif($_GET["accion"] == "descargarCitas"){
+    $controlador->descargarCitas();
+}
 elseif($_GET["accion"] == "consultarCitaMedico"){
     $controlador->consultarCitasMedico($_GET["consultarDocumento"]);
 }
@@ -110,13 +140,21 @@ elseif($_GET["accion"] == "consultarPaciente"){
     $controlador->consultarPaciente($_GET["documento"]);
 }
 elseif($_GET["accion"] == "ingresarPaciente"){
-    $controlador->agregarPaciente(
+    $contrasena = $_GET["PacContrasena"];
+    $confirmarContrasena = $_GET["PacContrasenaConfirmar"];
+    if($contrasena != $confirmarContrasena)   {
+        echo "<script>alert('Las contraseñas no coinciden');</script>";
+    }else{
+        $controlador->agregarPaciente(
+        $_GET["PacCorreo"],
+        $confirmarContrasena,
         $_GET["PacDocumento"],
         $_GET["PacNombres"],
         $_GET["PacApellidos"],
         $_GET["PacNacimiento"],
         $_GET["PacSexo"]
         );
+    }
 }
 elseif($_GET["accion"] == "consultarHora"){
     $controlador->consultarHorasDisponibles($_GET["medico"], $_GET["fecha"]);

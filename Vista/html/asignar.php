@@ -115,11 +115,32 @@ if(isset($value)){
     <form id="agregarPaciente">
         <table>
             <tr>
+                <td>Correo</td>
+
+                <td><input type="email" name="PacCorreo"
+
+                id="PacCorreo" required></td>
+            </tr>
+            <tr>
+                <td>Contraseña</td>
+
+                <td><input type="password" name="PacContrasena"
+
+                id="PacContrasena" required></td>
+            </tr>
+            <tr>
+                <td>Confirmar Contraseña</td>
+
+                <td><input type="password" name="PacContrasenaConfirmar"
+
+                id="PacContrasenaConfirmar" required></td>
+            </tr>
+            <tr>
                 <td>Documento</td>
 
                 <td><input type="text" name="PacDocumento"
 
-                id="PacDocumento"></td>
+                id="PacDocumento" required></td>
             </tr>
             <tr>
 
@@ -127,7 +148,7 @@ if(isset($value)){
 
                 <td><input type="text" name="PacNombres"
 
-                id="PacNombres"></td>
+                id="PacNombres" required></td>
             </tr>
             <tr>
 
@@ -135,7 +156,7 @@ if(isset($value)){
 
                 <td><input type="text" name="PacApellidos"
 
-                id="PacApellidos"></td>
+                id="PacApellidos" required></td>
             </tr>
             <tr>
 
@@ -151,7 +172,7 @@ if(isset($value)){
 
                 <td>
 
-                <select id="pacSexo" name="PacSexo">
+                <select id="pacSexo" name="PacSexo" required>
                     <option value="-1"
                     selected="selected">--Selecione el sexo ---</option>
                     <option value="M">Masculino</option>

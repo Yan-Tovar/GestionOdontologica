@@ -54,6 +54,20 @@ public function consultarCitasMPorDocumento($doc){
     $conexion->cerrar();
     return $result ;
 }
+public function descargarCitas(){
+    $conexion = new Conexion();
+    $conexion->abrir();
+    $sql = "SELECT pacientes.* , medicos.*, consultorios.*, citas.*"
+    . "FROM Pacientes as pacientes, Medicos as medicos, Consultorios
+    as consultorios ,citas "
+    . "WHERE citas.CitPaciente = pacientes.PacIdentificacion "
+    . " AND citas.CitMedico = medicos.MedIdentificacion "
+    . " AND citas.CitConsultorio = consultorios.ConNumero ";
+    $conexion->consulta($sql);
+    $result = $conexion->obtenerResult();
+    $conexion->cerrar();
+    return $result ;
+}
 public function consultarTratamientosPorDocumento($doc){
     $conexion = new Conexion();
     $conexion->abrir();
@@ -73,16 +87,28 @@ public function consultarPaciente($doc){
     $conexion->cerrar();
     return $result ;
 }
+public function validarCorreo(Paciente $paciente){
+    $conexion = new Conexion();
+    $conexion->abrir();
+    $correo = $paciente->obtenerCorreo();
+    $sql = "SELECT PacCorreo FROM Pacientes WHERE PacCorreo = '$correo' ";
+    $conexion->consulta($sql);
+    $result = $conexion->obtenerResult();
+    $conexion->cerrar();
+    return $result ;
+}
 public function agregarPaciente(Paciente $paciente){
     $conexion = new Conexion();
     $conexion->abrir();
+    $correo = $paciente->obtenerCorreo();
+    $contrasena = password_hash($paciente->obtenerContrasena(), PASSWORD_DEFAULT);
     $identificacion = $paciente->obtenerIdentificacion();
     $nombres = $paciente->obtenerNombres();
     $apellidos = $paciente->obtenerApellidos();
     $fechaNacimiento = $paciente->obtenerFechaNacimiento();
     $sexo = $paciente->obtenerSexo();
     $sql = "INSERT INTO Pacientes VALUES (
-    '$identificacion','$nombres','$apellidos',"
+    '$correo', '$contrasena', '$identificacion','$nombres','$apellidos',"
     . "'$fechaNacimiento','$sexo')";
     $conexion->consulta($sql);
     $filasAfectadas = $conexion->obtenerFilasAfectadas();
