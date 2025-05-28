@@ -17,9 +17,6 @@ if( isset($_GET["accion"])){
 if($_GET["accion"] == "asignar"){
     $controlador->cargarAsignar();
 }
-elseif($_GET["accion"] == "citapdf"){
-    $controlador->verPagina('Vista/html/Citapdf.php');
-}
 elseif($_GET["accion"] == "login"){
     $controlador->verPagina('Vista/html/login.php');
 }
