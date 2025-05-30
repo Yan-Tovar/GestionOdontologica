@@ -87,13 +87,12 @@ public function consultarPaciente($doc){
     $conexion->cerrar();
     return $result ;
 }
-public function validarCorreo(Paciente $paciente){
+public function validarCorreo($cor){
     $conexion = new Conexion();
     $conexion->abrir();
-    $correo = $paciente->obtenerCorreo();
-    $sql = "SELECT PacCorreo FROM Pacientes WHERE PacCorreo = '$correo' ";
+    $sql = "SELECT PacCorreo FROM Pacientes WHERE PacCorreo = '$cor' ";
     $conexion->consulta($sql);
-    $result = $conexion->obtenerResult();
+    $result = $conexion->obtenerUnaFila();
     $conexion->cerrar();
     return $result ;
 }
@@ -136,6 +135,15 @@ public function consultarHorasDisponibles($medico,$fecha){
     $conexion->cerrar();
     return $result ;
 }
+public function consultarConsultorioPorId($num){
+    $conexion = new Conexion();
+    $conexion->abrir();
+    $sql = "SELECT ConNumero AS ConNumero FROM Consultorios WHERE ConNumero = '$num' ";
+    $conexion->consulta($sql);
+    $result = $conexion->obtenerUnaFila();
+    $conexion->cerrar();
+    return $result;
+}
 public function consultarConsultorios(){
     $conexion = new Conexion();
     $conexion->abrir();
@@ -169,8 +177,7 @@ public function agregarConsultorio(Consultorio $consultorio){
     $conexion->abrir();
     $numero = $consultorio->ConsultorioNumero();
     $nombre = $consultorio->ConsultorioNombre();
-    $sql = "INSERT INTO consultorios VALUES (
-    '$numero','$nombre')";
+    $sql = "INSERT INTO Consultorios VALUES ('$numero', '$nombre' ) ";
     $conexion->consulta($sql);
     $filasAfectadas = $conexion->obtenerFilasAfectadas();
     $conexion->cerrar();

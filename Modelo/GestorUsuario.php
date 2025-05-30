@@ -1,61 +1,123 @@
 <?php
 class GestorUsuario {
-public function consultarUsuarioP($correo, $contrasena){
+
+public function consultarUsuarioP($correo, $contrasena) {
+    $conexion = new Conexion();
+    $conn = $conexion->abrir();
+
+    $stmt = $conn->prepare("SELECT * FROM Pacientes WHERE PacCorreo = ?");
+    $stmt->bind_param("s", $correo);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $usuario = $result->fetch_assoc();
+    $stmt->close();
+    $conexion->cerrar();
+
+    if ($usuario && password_verify($contrasena, $usuario['PacContrasena'])) {
+        return $usuario;
+    } else {
+        return false;
+    }
+}
+public function consultarUsuarioM($correo, $contrasena) {
+    $conexion = new Conexion();
+    $conn = $conexion->abrir();
+
+    $stmt = $conn->prepare("SELECT * FROM Medicos WHERE MedCorreo = ?");
+    $stmt->bind_param("s", $correo);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $usuario = $result->fetch_assoc();
+    $stmt->close();
+    $conexion->cerrar();
+
+    if ($usuario && password_verify($contrasena, $usuario['MedContrasena'])) {
+        return $usuario;
+    } else {
+        return false;
+    }
+}
+public function consultarUsuarioA($correo, $contrasena) {
+    $conexion = new Conexion();
+    $conn = $conexion->abrir();
+
+    $stmt = $conn->prepare("SELECT * FROM Administradores WHERE AdmCorreo = ?");
+    $stmt->bind_param("s", $correo);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $usuario = $result->fetch_assoc();
+    $stmt->close();
+    $conexion->cerrar();
+
+    if ($usuario && password_verify($contrasena, $usuario['AdmContrasena'])) {
+        return $usuario;
+    } else {
+        return false;
+    }
+}
+public function consultarMedicoPorDocumento($doc){
     $conexion = new Conexion();
     $conexion->abrir();
-    $sql = "SELECT * FROM Pacientes WHERE PacCorreo = '$correo'
-    AND PacContrasena = '$contrasena'";
+    $sql = "SELECT MedIdentificacion FROM Medicos Where MedIdentificacion = '$doc'";
     $conexion->consulta($sql);
-    $result = $conexion->obtenerResult();
+    $result = $conexion->obtenerUnaFila();
     $conexion->cerrar();
     return $result ;
 }
-public function consultarUsuarioM($correo, $contrasena){
+public function validarCorreoMedico($cor){
     $conexion = new Conexion();
     $conexion->abrir();
-    $sql = "SELECT * FROM Medicos WHERE MedCorreo = '$correo'
-    AND MedContrasena = '$contrasena'";
+    $sql = "SELECT MedCorreo FROM Medicos WHERE MedCorreo = '$cor'";
     $conexion->consulta($sql);
-    $result = $conexion->obtenerResult();
+    $result = $conexion->obtenerUnaFila();
     $conexion->cerrar();
     return $result ;
 }
-public function consultarUsuarioA($correo, $contrasena){
+public function agregarMedico(Medico $medico){
     $conexion = new Conexion();
     $conexion->abrir();
-    $sql = "SELECT * FROM Administradores WHERE AdmCorreo = '$correo' 
-    AND AdmContrasena = '$contrasena'";
+    $documento = $medico->obtenerDocumento();
+    $correo = $medico->obtenerCorreo();
+    $contrasena = password_hash($medico->obtenerContrasena(), PASSWORD_DEFAULT);
+    $nombre = $medico->obtenerNombre();
+    $apellidos= $medico->obtenerApellidos();
+    $sql = "INSERT INTO medicos VALUES ('$documento', '$correo', '$contrasena', '$nombre', '$apellidos' )";
     $conexion->consulta($sql);
-    $result = $conexion->obtenerResult();
+    $filasAfectadas = $conexion->obtenerFilasAfectadas();
+    $conexion->cerrar();
+    return $filasAfectadas;
+}
+public function consultarAdministradorPorDocumento($doc){
+    $conexion = new Conexion();
+    $conexion->abrir();
+    $sql = "SELECT AdmIdentificacion FROM Administradores Where AdmIdentificacion = '$doc'";
+    $conexion->consulta($sql);
+    $result = $conexion->obtenerUnaFila();
     $conexion->cerrar();
     return $result ;
 }
-public function datosUsuarioP($correo){
+public function validarCorreoAdministrador($cor){
     $conexion = new Conexion();
     $conexion->abrir();
-    $sql = "SELECT * FROM Pacientes WHERE PacCorreo = '$correo' ";
+    $sql = "SELECT AdmCorreo FROM Administradores WHERE AdmCorreo = '$cor'";
     $conexion->consulta($sql);
-    $result = $conexion->obtenerResult();
+    $result = $conexion->obtenerUnaFila();
     $conexion->cerrar();
     return $result ;
 }
-public function datosUsuarioM($correo){
+public function agregarAdministrador(Administrador $administrador){
     $conexion = new Conexion();
     $conexion->abrir();
-    $sql = "SELECT * FROM Medicos WHERE MedCorreo = '$correo' ";
+    $documento = $administrador->obtenerDocumento();
+    $correo = $administrador->obtenerCorreo();
+    $contrasena = password_hash($administrador->obtenerContrasena(), PASSWORD_DEFAULT);
+    $nombre = $administrador->obtenerNombre();
+    $apellidos= $administrador->obtenerApellidos();
+    $sql = "INSERT INTO administradores VALUES ('$documento', '$correo', '$contrasena', '$nombre', '$apellidos' )";
     $conexion->consulta($sql);
-    $result = $conexion->obtenerResult();
+    $filasAfectadas = $conexion->obtenerFilasAfectadas();
     $conexion->cerrar();
-    return $result ;
-}
-public function datosUsuarioA($correo){
-    $conexion = new Conexion();
-    $conexion->abrir();
-    $sql = "SELECT * FROM administradores WHERE AdmCorreo = '$correo' ";
-    $conexion->consulta($sql);
-    $result = $conexion->obtenerResult();
-    $conexion->cerrar();
-    return $result ;
+    return $filasAfectadas;
 }
 }
 ?>

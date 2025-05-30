@@ -5,14 +5,14 @@ class Conexion {
     private $result;
     private $filasAfectadas;
     private $citaId;
-public function abrir(){
-    $this->mySQLI=new mysqli("localhost","root","","citas");
-    if(mysqli_connect_error()){
-        return 0;
-    } else {
-        return 1;
+public function abrir() {
+    $this->mySQLI = new mysqli("localhost", "root", "", "citas");
+    if ($this->mySQLI->connect_error) {
+        die("Conexión fallida: " . $this->mySQLI->connect_error);
     }
+    return $this->mySQLI; // ← Esta línea es clave
 }
+
 public function cerrar(){
     $this->mySQLI->close();
 }
@@ -30,13 +30,17 @@ public function obtenerResult(){
 public function obtenerFilasAfectadas(){
     return $this->filasAfectadas;
 }
- public function obtenerUnaFila() {
-        if ($this->result) {
-            return $this->result->fetch_assoc();
-        }
-        return null;
+public function obtenerUnaFila() {
+    if ($this->result) {
+        return $this->result->fetch_assoc();
     }
+    return null;
+}
 public function obtenerCitaId(){
     return $this->citaId;
 }
+public function obtenerConexion() {
+    return $this->mySQLI;
+}
+
 }

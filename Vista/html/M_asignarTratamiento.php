@@ -1,3 +1,7 @@
+<?php
+$value=$_SESSION['us_id'];
+if (isset($value) && $_SESSION['rol'] == 'Medico'){
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -76,3 +80,8 @@
 </div>
 </body>
 </html>
+<?php
+}else{
+    header("Location: index.php");
+}
+?>

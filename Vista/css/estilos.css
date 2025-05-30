@@ -159,14 +159,14 @@ background-color: #7092be;
 }
 .form input{
   margin-left: 4%;
-  width: 90%;
+  width: 50%;
   height: 30px;
   border: blue solid 1px;
   border-radius: 30px;
   padding: 3px;
 }
 .form input[type="submit"]{
-  width: 50%;
+  width: 10%;
   height: 30px;
   margin-left: 70px;
   background-color: blue;
@@ -184,7 +184,7 @@ background-color: #7092be;
 }
 .form select{
   margin-left: 4%;
-  width: 90%;
+  width: 50%;
   height: 30px;
   border: blue solid 1px;
   border-radius: 30px;

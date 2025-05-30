@@ -1,7 +1,8 @@
 <?php
 $value=$_SESSION['us_id'];
-if(isset($value)){
+if(isset($value) && $_SESSION['rol'] == 'Administrador'){
 ?>
+
 
 <!DOCTYPE html>
 <html>

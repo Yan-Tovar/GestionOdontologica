@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 27-05-2025 a las 17:23:51
+-- Tiempo de generación: 30-05-2025 a las 17:24:37
 -- Versión del servidor: 10.4.32-MariaDB
--- Versión de PHP: 8.1.25
+-- Versión de PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -32,7 +32,7 @@ USE `citas`;
 CREATE TABLE `administradores` (
   `AdmIdentificacion` int(11) NOT NULL,
   `AdmCorreo` varchar(100) NOT NULL,
-  `AdmContrasena` varchar(30) NOT NULL,
+  `AdmContrasena` varchar(255) NOT NULL,
   `AdmNombres` varchar(30) NOT NULL,
   `AdmApellidos` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -42,7 +42,7 @@ CREATE TABLE `administradores` (
 --
 
 INSERT INTO `administradores` (`AdmIdentificacion`, `AdmCorreo`, `AdmContrasena`, `AdmNombres`, `AdmApellidos`) VALUES
-(1, 'admi@gmail.com', 'a1', 'Administrador', '');
+(111, 'admi@gmail.com', '$2y$10$VG9xbP9rkLWE.LVfqI2Y2O71EDj3mHy9zdV9cN3Q8hymqaWM3KjvS', 'administrador1', 'a1');
 
 -- --------------------------------------------------------
 
@@ -61,13 +61,6 @@ CREATE TABLE `citas` (
   `CitObservaciones` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
---
--- Volcado de datos para la tabla `citas`
---
-
-INSERT INTO `citas` (`CitNumero`, `CitFecha`, `CitHora`, `CitPaciente`, `CitMedico`, `CitConsultorio`, `CitEstado`, `CitObservaciones`) VALUES
-(1, '2025-05-01', '8:00', '1080', '12345', 1, 'Solicitada', 'Ninguna');
-
 -- --------------------------------------------------------
 
 --
@@ -85,8 +78,7 @@ CREATE TABLE `consultorios` (
 
 INSERT INTO `consultorios` (`ConNumero`, `ConNombre`) VALUES
 (1, 'consultorio 1'),
-(2, 'Consultorio 2'),
-(3, 'consultorio 3');
+(2, 'Consultorio 2');
 
 -- --------------------------------------------------------
 
@@ -125,17 +117,10 @@ INSERT INTO `horas` (`hora`) VALUES
 CREATE TABLE `medicos` (
   `MedIdentificacion` char(10) NOT NULL,
   `MedCorreo` varchar(100) NOT NULL,
-  `MedContrasena` varchar(50) NOT NULL,
+  `MedContrasena` varchar(255) NOT NULL,
   `MedNombres` varchar(50) NOT NULL,
   `MedApellidos` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
-
---
--- Volcado de datos para la tabla `medicos`
---
-
-INSERT INTO `medicos` (`MedIdentificacion`, `MedCorreo`, `MedContrasena`, `MedNombres`, `MedApellidos`) VALUES
-('12345', 'pepi@gmail.com', 'p1', 'Pepito', 'Perez');
 
 -- --------------------------------------------------------
 
@@ -145,20 +130,13 @@ INSERT INTO `medicos` (`MedIdentificacion`, `MedCorreo`, `MedContrasena`, `MedNo
 
 CREATE TABLE `pacientes` (
   `PacCorreo` varchar(100) NOT NULL,
-  `PacContrasena` varchar(50) NOT NULL,
+  `PacContrasena` varchar(255) DEFAULT NULL,
   `PacIdentificacion` char(10) NOT NULL,
   `PacNombres` varchar(50) NOT NULL,
   `PacApellidos` varchar(50) DEFAULT NULL,
   `PacFechaNacimiento` date NOT NULL,
   `PacSexo` enum('M','F') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
-
---
--- Volcado de datos para la tabla `pacientes`
---
-
-INSERT INTO `pacientes` (`PacCorreo`, `PacContrasena`, `PacIdentificacion`, `PacNombres`, `PacApellidos`, `PacFechaNacimiento`, `PacSexo`) VALUES
-('yan@gmail.com', 'y1', '1080', 'Yan', 'Tovar', '2015-06-01', 'M');
 
 -- --------------------------------------------------------
 
@@ -175,23 +153,6 @@ CREATE TABLE `tratamientos` (
   `TraObservaciones` text NOT NULL,
   `TraPaciente` char(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
-
---
--- Volcado de datos para la tabla `tratamientos`
---
-
-INSERT INTO `tratamientos` (`TraNumero`, `TraFechaAsignado`, `TraDescripcion`, `TraFechaInicio`, `TraFechaFin`, `TraObservaciones`, `TraPaciente`) VALUES
-(1, '2025-05-01', 'Tratamiento editado', '2025-05-01', '2025-05-30', 'Ninguna', '1080'),
-(6, '2025-05-01', 'acetaminofen', '2025-05-24', '2025-05-31', 'ninguna', '1080'),
-(7, '2025-05-01', 'acetaminofen', '2025-05-25', '2025-05-31', 'ninguna', '1080'),
-(8, '2025-05-01', 'acetaminofen', '2025-05-25', '2025-05-31', 'ninguna', '1080'),
-(9, '2025-05-01', 'acetaminofen', '2025-05-25', '2025-05-31', 'ninguna', '1080'),
-(10, '2025-05-01', 'acetaminofen', '2025-05-25', '2025-05-31', 'ninguna', '1080'),
-(11, '2025-05-01', 'acetaminofen', '2025-05-25', '2025-05-31', 'ninguna', '1080'),
-(12, '2025-05-01', 'acetaminofen', '2025-05-25', '2025-05-31', 'ninguna', '1080'),
-(13, '2025-05-01', 'acetaminofen', '2025-05-25', '2025-05-31', 'ninguna', '1080'),
-(15, '2025-05-01', 'acetaminofen', '2025-05-25', '2025-05-31', 'ninguna', '1080'),
-(16, '2025-05-01', 'acetaminofen', '2025-05-25', '2025-05-31', 'ninguna', '1080');
 
 --
 -- Índices para tablas volcadas
@@ -245,7 +206,7 @@ ALTER TABLE `tratamientos`
 -- AUTO_INCREMENT de la tabla `citas`
 --
 ALTER TABLE `citas`
-  MODIFY `CitNumero` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `CitNumero` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT de la tabla `tratamientos`

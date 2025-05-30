@@ -1,6 +1,6 @@
 <?php
 $value=$_SESSION['us_id'];
-if(isset($value)){
+if(isset($value) && $_SESSION['rol'] == 'Administrador'){
 ?>
 <!DOCTYPE html>
 <html>
@@ -36,9 +36,20 @@ if(isset($value)){
             <li>Administrar Tratamientos</li>
         </ul>
         </p>
-         <a href="index.php?accion=registrarUsuario">
-            <button>Registrar Usuario</button>
+        <table>
+            <tr>
+                <td>
+                     <a href="index.php?accion=registrarFuncionario">
+            <button>Registrar Funcionario</button>
         </a>
+                </td>
+            </tr>
+            </tr>
+                <tr><td colspan="2">
+                    <div id="paciente"></div>
+                </td>
+                </tr>
+        </table>
         <a href="index.php?accion=cerrarSesion"> 
             <button>Cerrar Sesion</button>
         </a>

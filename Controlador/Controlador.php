@@ -5,53 +5,52 @@ public function verPagina($ruta){
     require_once $ruta;
 }
 
-public function loginP($correo, $contrasena){
+public function loginP($correo, $contrasena) {
     $gestorUsuario = new GestorUsuario();
-    $result = $gestorUsuario->consultarUsuarioP($correo, $contrasena);
-    if($result->num_rows > 0){
-        $resultdp= $gestorUsuario->datosUsuarioP($correo);
-        $row = $result->fetch_assoc();
-        $_SESSION["us_cor"]=$row['PacCorreo'];
-        $_SESSION["us_con"]=$row['PacContrasena'];
-        $_SESSION["us_id"]=$row['PacIdentificacion'];
-        $_SESSION["us_nom"]=$row['PacNombres'];
-        $_SESSION["us_ape"]=$row['PacApellidos'];
-        $_SESSION["us_fec"]=$row['PacFechaNacimiento'];
-        $_SESSION["us_sex"]=$row['PacSexo'];
+    $usuario = $gestorUsuario->consultarUsuarioP($correo, $contrasena);
+
+    if ($usuario) {
+        $_SESSION["us_cor"] = $usuario['PacCorreo'];
+        $_SESSION["us_id"]  = $usuario['PacIdentificacion'];
+        $_SESSION["us_nom"] = $usuario['PacNombres'];
+        $_SESSION["us_ape"] = $usuario['PacApellidos'];
+        $_SESSION["us_fec"] = $usuario['PacFechaNacimiento'];
+        $_SESSION["us_sex"] = $usuario['PacSexo'];
+        $_SESSION["rol"] = 'Paciente';
         require_once 'Vista/html/P_inicio.php';
-    }else{
+    } else {
         require_once 'Vista/html/errorUsuario.php';
     }
 }
-public function loginM($correo, $contrasena){
+public function loginM($correo, $contrasena) {
     $gestorUsuario = new GestorUsuario();
-    $result = $gestorUsuario->consultarUsuarioM($correo, $contrasena);
-    if($result->num_rows > 0){
-        $resultdp= $gestorUsuario->datosUsuarioM($correo);
-        $row = $result->fetch_assoc();
-        $_SESSION["us_id"]=$row['MedIdentificacion'];
-        $_SESSION["us_cor"]=$row['MedCorreo'];
-        $_SESSION["us_con"]=$row['MedContrasena'];
-        $_SESSION["us_nom"]=$row['MedNombres'];
-        $_SESSION["us_ape"]=$row['MedApellidos'];
+    $usuario = $gestorUsuario->consultarUsuarioM($correo, $contrasena);
+
+    if ($usuario) {
+        $_SESSION["us_id"]  = $usuario['MedIdentificacion'];
+        $_SESSION["us_cor"] = $usuario['MedCorreo'];
+        $_SESSION["us_nom"] = $usuario['MedNombres'];
+        $_SESSION["us_ape"] = $usuario['MedApellidos'];
+        $_SESSION["rol"] = 'Medico';
         require_once 'Vista/html/M_inicio.php';
-    }else{
+    } else {
+        echo "<p style='color:red;'>Login incorrecto</p>";
         require_once 'Vista/html/errorUsuario.php';
     }
 }
-public function loginA($correo, $contrasena){
+public function loginA($correo, $contrasena) {
     $gestorUsuario = new GestorUsuario();
-    $result = $gestorUsuario->consultarUsuarioA($correo, $contrasena);
-    if($result->num_rows > 0){
-        $resultdp= $gestorUsuario->datosUsuarioA($correo);
-        $row = $result->fetch_assoc();
-        $_SESSION["us_id"]=$row['AdmIdentificacion'];
-        $_SESSION["us_cor"]=$row['AdmCorreo'];
-        $_SESSION["us_con"]=$row['AdmContrasena'];
-        $_SESSION["us_nom"]=$row['AdmNombres'];
-        $_SESSION["us_ape"]=$row['AdmApellidos'];
+    $usuario = $gestorUsuario->consultarUsuarioA($correo, $contrasena);
+
+    if ($usuario) {
+        $_SESSION["us_id"]  = $usuario['AdmIdentificacion'];
+        $_SESSION["us_cor"] = $usuario['AdmCorreo'];
+        $_SESSION["us_nom"] = $usuario['AdmNombres'];
+        $_SESSION["us_ape"] = $usuario['AdmApellidos'];
+        $_SESSION["rol"] = "Administrador";
         require_once 'Vista/html/inicio.php';
-    }else{
+    } else {
+        echo "<p style='color:red;'>Login incorrecto</p>";
         require_once 'Vista/html/errorUsuario.php';
     }
 }
@@ -60,6 +59,132 @@ public function cerrarSesion(){
     session_destroy();
     header("Location: index.php");
     exit;
+}
+public function agregarPaciente($cor, $con, $doc,$nom,$ape,$fec,$sex){
+    $paciente = new Paciente($cor, $con,$doc, $nom, $ape, $fec, $sex);
+    $gestorCita = new GestorCita();
+    $registros = $gestorCita->consultarPaciente($doc);
+    if($registros > 0){
+        echo "<script>alert('¡¡Sin Registrar!! El paciente con este documento ya existe');</script>";
+        require_once 'Vista/html/registrar.php';
+    } else {
+        $registros = $gestorCita->validarCorreo($cor);
+        if($registros > 0){
+            echo "<script>alert('¡¡Sin Registrar!! Debes cambiar el correo');</script>";
+            require_once 'Vista/html/registrar.php';
+        } else {
+            $registros = $gestorCita->agregarPaciente($paciente);
+            if($registros > 0){
+                echo "
+                <div id='noti' style='background-color: #33CCFF; padding: 10px; margin: 10px; border: 1px solid blue;'>
+                    Se insertó el paciente \"$nom\" con éxito
+                </div>
+                <script>
+                    setTimeout(() => {
+                        document.getElementById('noti').style.display = 'none';
+                    }, 3000);
+                </script>
+                ";
+                require_once 'Vista/html/inicio.php';
+            } else {
+                echo "
+                <div id='noti' style='background-color:rgb(255, 51, 78); padding: 10px; margin: 10px; border: 1px solid blue;'>
+                    error al ingresar el paciente \"$nom\"
+                </div>
+                <script>
+                    setTimeout(() => {
+                        document.getElementById('noti').style.display = 'none';
+                    }, 3000);
+                </script>
+                ";
+                require_once 'Vista/html/registrar.php';
+            }
+        }
+    }
+}
+public function agregarM($doc,$cor,$con,$nom,$ape){
+    $medico = new Medico( $doc, $cor, $con, $nom, $ape, );
+    $gestorUsuario = new GestorUsuario();
+    $registros = $gestorUsuario->consultarMedicoPorDocumento($doc);
+    if($registros > 0){
+        echo "<script>alert('¡¡Sin Registrar!! El medico con este documento ya existe');</script>";
+        require_once 'Vista/html/registrar.php';
+    } else {
+        $registros = $gestorUsuario->validarCorreoMedico($cor);
+        if($registros > 0){
+            echo "<script>alert('¡¡Sin Registrar!! Debes cambiar el correo');</script>";
+            require_once 'Vista/html/registrar.php';
+        } else {
+            $registros = $gestorUsuario->agregarMedico($medico);
+            if($registros > 0){
+                echo "
+                <div id='noti' style='background-color: #33CCFF; padding: 10px; margin: 10px; border: 1px solid blue;'>
+                    Se insertó el médico \"$nom\" con éxito
+                </div>
+                <script>
+                    setTimeout(() => {
+                        document.getElementById('noti').style.display = 'none';
+                    }, 3000);
+                </script>
+                ";
+                require_once 'Vista/html/inicio.php';
+            } else {
+                echo "
+                <div id='noti' style='background-color:rgb(255, 51, 78); padding: 10px; margin: 10px; border: 1px solid blue;'>
+                    error al ingresar el medico \"$nom\"
+                </div>
+                <script>
+                    setTimeout(() => {
+                        document.getElementById('noti').style.display = 'none';
+                    }, 3000);
+                </script>
+                ";
+                require_once 'Vista/html/registrar.php';
+            }
+        }
+    }
+}
+public function agregarA($doc,$cor,$con,$nom,$ape){
+    $administrador = new Administrador( $doc, $cor, $con, $nom, $ape, );
+    $gestorUsuario = new GestorUsuario();
+    $registros = $gestorUsuario->consultarAdministradorPorDocumento($doc);
+    if($registros > 0){
+        echo "<script>alert('¡¡Sin Registrar!! El administrador con este documento ya existe');</script>";
+        require_once 'Vista/html/registrar.php';
+    } else {
+        $registros = $gestorUsuario->validarCorreoAdministrador($cor);
+        if($registros > 0){
+            echo "<script>alert('¡¡Sin Registrar!! Debes cambiar el correo');</script>";
+            require_once 'Vista/html/registrar.php';
+        } else {
+            $registros = $gestorUsuario->agregarAdministrador($administrador);
+            if($registros > 0){
+                echo "
+                <div id='noti' style='background-color: #33CCFF; padding: 10px; margin: 10px; border: 1px solid blue;'>
+                    Se insertó el administrador \"$nom\" con éxito
+                </div>
+                <script>
+                    setTimeout(() => {
+                        document.getElementById('noti').style.display = 'none';
+                    }, 3000);
+                </script>
+                ";
+                require_once 'Vista/html/inicio.php';
+            } else {
+                echo "
+                <div id='noti' style='background-color:rgb(255, 51, 78); padding: 10px; margin: 10px; border: 1px solid blue;'>
+                    error al ingresar el administrador \"$nom\"
+                </div>
+                <script>
+                    setTimeout(() => {
+                        document.getElementById('noti').style.display = 'none';
+                    }, 3000);
+                </script>
+                ";
+                require_once 'Vista/html/registrar.php';
+            }
+        }
+    }
 }
 public function agregarCita($doc,$med,$fec,$hor,$con){
     $cita = new Cita(null, $fec, $hor, $doc, $med, $con, "Solicitada",
@@ -111,21 +236,6 @@ public function consultarPaciente($doc){
     $result = $gestorCita->consultarPaciente($doc);
     require_once 'Vista/html/consultarPaciente.php';
 }
-public function agregarPaciente($cor, $con, $doc,$nom,$ape,$fec,$sex){
-    $paciente = new Paciente($cor, $con,$doc, $nom, $ape, $fec, $sex);
-    $gestorCita = new GestorCita();
-    $registros = $gestorCita->validarCorreo($paciente);
-    if($registros > 0){
-        echo "<script>alert('Debes cambiar el correo porque este ya esta con la contraseña 1234paciente');</script>";
-    } else {
-        $registros = $gestorCita->agregarPaciente($paciente);
-        if($registros > 0){
-            echo "Se insertó el paciente con exito";
-        } else {
-            echo "Error al grabar el paciente";
-        }
-    }
-}
 public function cargarAsignar(){
     $gestorCita = new GestorCita();
     $result = $gestorCita->consultarMedicos();
@@ -158,15 +268,37 @@ public function listarConsultorio(){
     require_once 'Vista/html/listarConsultorios.php';
 }
 public function agregarConsultorio($num,$nom){
-    // La clase 'Consultorio' está dentro de Modelo/Paciente.php
-    $paciente = new Consultorio($num,$nom); 
+    $consultorio = new Consultorio($num,$nom); 
     $gestorCita = new GestorCita();
-    $registros = $gestorCita->agregarConsultorio($paciente);
-    if($registros > 0){
-        echo "Se insertó el consultorio con exito";
+    $registros = $gestorCita->consultarConsultorioPorId($num);
+    if($registros >=1){
+        echo "<script>alert('¡¡Sin Registrar!! El Consultorio con este documento ya existe');</script>";
     } else {
-        echo "Error al grabar el consultorio";
-    }
+            $registros = $gestorCita->agregarConsultorio($consultorio);
+            if($registros > 0){
+                echo "
+                <div id='noti' style='background-color: #33CCFF; padding: 10px; margin: 10px; border: 1px solid blue;'>
+                    Se insertó el Consultorio \"$nom\" con éxito
+                </div>
+                <script>
+                    setTimeout(() => {
+                        document.getElementById('noti').style.display = 'none';
+                    }, 3000);
+                </script>
+                ";
+            } else {
+                echo "
+                <div id='noti' style='background-color:rgb(255, 51, 78); padding: 10px; margin: 10px; border: 1px solid blue;'>
+                    error al ingresar el Consultorio \"$nom\"
+                </div>
+                <script>
+                    setTimeout(() => {
+                        document.getElementById('noti').style.display = 'none';
+                    }, 3000);
+                </script>
+                ";
+            }
+        }
 }
 public function editarC($num,$nom){
     $gestorCita = new GestorCita();

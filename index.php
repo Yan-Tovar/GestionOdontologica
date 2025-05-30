@@ -24,7 +24,7 @@ if($_GET["accion"] == "asignar"){
 elseif($_GET["accion"] == "login"){
     $controlador->verPagina('Vista/html/login.php');
 }
-elseif($_GET["accion"] == "registrarUsuario"){
+elseif($_GET["accion"] == "registrarFuncionario"){
     $controlador->verPagina('Vista/html/registrar.php');
 }
 elseif($_GET["accion"] == "inicio"){
@@ -76,7 +76,7 @@ elseif($_GET["accion"] == "iniciarSesion"){
             echo "Debe seleccionar un rol";
     }   
 }
-elseif($_GET["accion"] == "nuevoUsuario"){
+elseif($_GET["accion"] == "nuevoFuncionario"){
     $contrasena = $_POST["contrasena"];
     $confirmarContrasena = $_POST["confirmarContrasena"];
     if($contrasena != $confirmarContrasena)   {
@@ -84,16 +84,26 @@ elseif($_GET["accion"] == "nuevoUsuario"){
         $controlador->verPagina('Vista/html/registrar.php');
     }else{
         $rol = $_POST["rol"];
-        // switch ($rol) {
-        //     case "medico":
-        //         $controlador->registrarM($_POST["correo"], $_POST["contrasena"]);
-        //         break;
-        //     case "administrador":
-        //         $controlador->registrarA($_POST["correo"], $_POST["contrasena"]);
-        //         break;
-        //     default:
-        //         echo "Debe seleccionar un rol";
-        // }
+        switch ($rol) {
+            case "medico":
+                $controlador->agregarM(
+                    $_POST['documento'],
+                    $_POST['correo'],
+                    $confirmarContrasena,
+                    $_POST['nombre'],
+                    $_POST['apellidos']);
+                break;
+            case "administrador":
+                $controlador->agregarA(
+                    $_POST['documento'],
+                    $_POST['correo'],
+                    $confirmarContrasena,
+                    $_POST['nombre'],
+                    $_POST['apellidos']);
+                break;
+            default:
+                echo "Debe seleccionar un rol";
+        }
     }
 }
 elseif($_GET["accion"] == "cerrarSesion"){
@@ -170,8 +180,8 @@ elseif($_GET["accion"] == "listarConsultorio"){
 }
 elseif($_GET["accion"] == "ingresarConsultorio"){
     $controlador->agregarConsultorio(
-        $_GET["ConNombre"],
-        $_GET["ConNumero"]
+        $_GET["ConNumero"],
+        $_GET["ConNombre"]
         );
 }
 elseif($_GET["accion"] == "editarConsultorio"){

@@ -39,16 +39,18 @@ public function obtenerSexo(){
 }
 }
 class Consultorio {
-    private $nombre;
     private $numero;
-public function __construct($nom,$num) {
-    $this->nombre=$nom;
+    private $nombre;
+    
+public function __construct($num,$nom) {
     $this->numero=$num;
-}
-public function consultorioNombre(){
-    return $this->nombre;
+    $this->nombre=$nom;
+    
 }
 public function consultorioNumero(){
     return $this->numero;
+}
+public function consultorioNombre(){
+    return $this->nombre;
 }
 }
