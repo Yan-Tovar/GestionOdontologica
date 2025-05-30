@@ -29,6 +29,26 @@ $(document).ready(function(){
             "Cancelar":cancelar
         }
     });
+    $("#frmEditaM").dialog({
+        autoOpen: false,
+        height: 310,
+        width: 400,
+        modal: true,
+        buttons: {
+            "Editar":editarMedico,
+            "Cancelar":cancelar
+        }
+    });
+    $("#frmEditarA").dialog({
+        autoOpen: false,
+        height: 310,
+        width: 400,
+        modal: true,
+        buttons: {
+            "Cambiar":editarAdministrador,
+            "Cancelar":cancelar
+        }
+    });
     $("#frmEditarT").dialog({
         autoOpen: false,
         height: 310,
@@ -51,6 +71,7 @@ function mostrarFormulario(){
     $("#PacDocumento").attr("value",documento);
     $("#frmPaciente").dialog('open');
 }
+
 function insertarPaciente(){
     queryString = $("#agregarPaciente").serialize();
     url = "index.php?accion=ingresarPaciente&" + queryString ;
@@ -132,6 +153,26 @@ function mostrarFormularioE(numero, nombre) {
     // Mostrar el formulario tipo diálogo
     $('#frmEditar').dialog('open');
 }
+function mostrarFormularioM(doc, cor, nom, ape) {
+    // Llenar los campos del formulario
+    $('#inputDocumento').attr("value",doc);
+    $('#inputCorreo').val(cor);
+    $('#inputNombres').val(nom);
+    $('#inputApellidos').val(ape);
+
+    // Mostrar el formulario tipo diálogo
+    $('#frmEditaM').dialog('open');
+}
+function mostrarFormularioA(doc, cor, nom, ape) {
+    // Llenar los campos del formulario
+    $('#inputDocumento').attr("value",doc);
+    $('#inputCorreo').val(cor);
+    $('#inputNombres').val(nom);
+    $('#inputApellidos').val(ape);
+
+    // Mostrar el formulario tipo diálogo
+    $('#frmEditarA').dialog('open');
+}
 function editarConsultorio(numero, nombre){
     numero = $("#inputNumero").val();
     nombre = $("#inputNombre").val();
@@ -167,6 +208,53 @@ function editarTratamiento(numero, fechaA, descripcion, fechaI, fechaF, observac
     $("#paciente2").load(url);
     $("#frmEditarT").dialog('close');
 
+}
+function editarMedico(doc, cor, nom, ape){
+    doc = $("#inputDocumento").val();
+    cor = $("#inputCorreo").val();
+    nom = $("#inputNombres").val();
+    ape = $("#inputApellidos").val();
+    url = "index.php?accion=editarMedico&inputDocumento=" + encodeURIComponent(doc)
+    + "&inputCorreo=" + encodeURIComponent(cor) + "&inputNombres=" + encodeURIComponent(nom)
+    + "&inputApellidos=" + encodeURIComponent(ape);
+    $("#listado").load(url);
+    $("#frmEditaM").dialog('close');
+
+}
+function editarAdministrador(doc, cor, nom, ape){
+    doc = $("#inputDocumento").val();
+    cor = $("#inputCorreo").val();
+    nom = $("#inputNombres").val();
+    ape = $("#inputApellidos").val();
+    if(cor == "" || nom == "" || ape == ""){
+        alert('Debe completar todos los campos');
+    }else{
+    url = "index.php?accion=editarAdministrador&inputDocumento=" + encodeURIComponent(doc)
+    + "&inputCorreo=" + encodeURIComponent(cor) + "&inputNombres=" + encodeURIComponent(nom)
+    + "&inputApellidos=" + encodeURIComponent(ape);
+    $("#listado").load(url);
+    $("#frmEditarA").dialog('close');
+    }
+}
+function eliminarM(doc){
+    if (doc) {
+        if (confirm('¿Está seguro de Eliminar el Medico?')) {
+            let url = "index.php?accion=eliminarMedico&id=" + doc ;
+            $("#listado").load(url);
+        }
+    } else {
+        alert('No se ha podido encontrar el Documento');
+    }
+}
+function eliminarA(doc){
+    if (doc) {
+        if (confirm('¿Está seguro de Eliminar el Administrador?')) {
+            let url = "index.php?accion=eliminarAdministrador&id=" + doc ;
+            $("#listado").load(url);
+        }
+    } else {
+        alert('No se ha podido encontrar el Documento');
+    }
 }
 function eliminarC(numero){
     if (numero) {

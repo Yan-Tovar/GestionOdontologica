@@ -178,6 +178,12 @@ elseif($_GET["accion"] == "confirmarCancelar"){
 elseif($_GET["accion"] == "listarConsultorio"){
     $controlador->listarConsultorio();
 }
+elseif($_GET["accion"] == "listarMedicos"){
+    $controlador->listarMedicos();
+}
+elseif($_GET["accion"] == "listarAdministradores"){
+    $controlador->listarAdministradores();
+}
 elseif($_GET["accion"] == "ingresarConsultorio"){
     $controlador->agregarConsultorio(
         $_GET["ConNumero"],
@@ -201,6 +207,22 @@ elseif($_GET["accion"] == "editarTratamiento"){
         $_GET["inputPaciente"]
         );
 }
+elseif($_GET["accion"] == "editarMedico"){
+    $controlador->editarM(
+        $_GET["inputDocumento"],
+        $_GET["inputCorreo"],
+        $_GET["inputNombres"],
+        $_GET["inputApellidos"],
+        );
+}
+elseif($_GET["accion"] == "editarAdministrador"){
+    $controlador->editarA(
+        $_GET["inputDocumento"],
+        $_GET["inputCorreo"],
+        $_GET["inputNombres"],
+        $_GET["inputApellidos"],
+        );
+}
 elseif ($_GET["accion"] == "eliminarConsultorio") {
     $id = $_GET["id"];
     $controlador->eliminarC($id);
@@ -208,6 +230,14 @@ elseif ($_GET["accion"] == "eliminarConsultorio") {
 elseif ($_GET["accion"] == "eliminarTratamiento") {
     $id = $_GET["id"];
     $controlador->eliminarT($id);
+}
+elseif ($_GET["accion"] == "eliminarMedico") {
+    $id = $_GET["id"];
+    $controlador->eliminarM($id);
+}
+elseif ($_GET["accion"] == "eliminarAdministrador") {
+    $id = $_GET["id"];
+    $controlador->eliminarA($id);
 }
 } else {
     $controlador->verPagina('Vista/html/paginaInicio.php');

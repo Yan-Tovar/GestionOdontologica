@@ -24,20 +24,20 @@ if(isset($value) && $_SESSION['rol'] == 'Administrador'){
         <li><a href="index.php?accion=asignar">Asignar</a> </li>
         <li><a href="index.php?accion=consultar">Consultar Cita</a> </li>
         <li><a href="index.php?accion=cancelar">Cancelar Cita</a></li>
-        <li><a href="index.php?accion=listarConsultorio" class="activa"></a>Consultorios</li>
+        <li><a href="index.php?accion=listarConsultorio"></a>Consultorios</li>
         <li><a href="index.php?accion=AasignarTratamientos">Tratamientos</a></li>
         <li><a href="index.php?accion=listarMedicos">Medicos</a></li>        
-        <li><a href="index.php?accion=listarAdministradores">Administradores</a></li>
+        <li><a href="index.php?accion=listarAdministradores" class="activa">Administradores</a></li>
         <li><a href="index.php?accion=descargarCitas">Excel Citas</a></li>
     </ul>
     </ul>
     <div id="contenido">        
         <div id="contenido">
-            <h2>Consultorios</h2>
+            <h2>Administradores</h2>
             <table>
                 <tr>
                     <td>
-                        <input type="submit" value="Agregar" name="agregarConsultorio"id="agregarConsultorio" onclick="agregarConsultorio()">
+                        <a href="index.php?accion=registrarFuncionario">Agregar</a>
                     </td>
                 </tr>
                 <tr>
@@ -51,22 +51,25 @@ if(isset($value) && $_SESSION['rol'] == 'Administrador'){
             ?>
             <table>
                 <tr>
-                    <th>ConNumero |</th><th>ConNombre |</th><th>Acciones |</th>
+                    <th>Identificacion |</th><th>Correo |</th><th>Nombre |</th>
+                    <th>Apellidos |</th>
                 </tr>
                 <?php
                     while($fila=$result->fetch_object()){
                 ?>
                 <tr>
-                    <td id="asignarDocumento"><?php echo $fila->ConNumero; $numero= $fila->ConNumero;?></td>
-                    <td><?php echo $fila->ConNombre; $nombre= $fila->ConNombre;?></td>
+                    <td id="asignarDocumento"><?php echo $fila->AdmIdentificacion; $doc= $fila->AdmIdentificacion;?></td>
+                    <td><?php echo $fila->AdmCorreo; $cor= $fila->AdmCorreo;?></td>
+                    <td><?php echo $fila->AdmNombres; $nom= $fila->AdmNombres;?></td>
+                    <td><?php echo $fila->AdmApellidos; $ape= $fila->AdmApellidos;?></td>
                     <td>
                         <!-- Editar Consultorio -->
-                        <input type="button" value="Editar" name="editarConsultorio" id="editarConsultorio"
-                        onclick="mostrarFormularioE('<?php echo $fila->ConNumero; ?>', '<?php echo $fila->ConNombre; ?>')">
+                        <input type="button" value="Editar" name="editarAdministrador" id="editarAdministrador"
+                        onclick="mostrarFormularioA('<?php echo $fila->AdmIdentificacion; ?>', '<?php echo $fila->AdmCorreo; ?>', '<?php echo $fila->AdmNombres; ?>', '<?php echo $fila->AdmApellidos; ?>')">
 
                         <!-- Eliminar Consultorio -->
-                        <input type="button" value="Eliminar" name="eliminarConsultorio" id="eliminarConsultorio"
-                        onclick="eliminarC('<?php echo $fila->ConNumero; ?>')">
+                        <input type="button" value="Eliminar" name="eliminarAdministrador" id="eliminarAdministrador"
+                        onclick="eliminarA('<?php echo $fila->AdmIdentificacion; ?>')">
                     </td>
                 </tr>
                 <?php
@@ -77,38 +80,31 @@ if(isset($value) && $_SESSION['rol'] == 'Administrador'){
                 }
                 else {
             ?>
-            <p>Aún no hay Consultorios.</p>
+            <p>Aún no hay Administradores.</p>
             <?php
             }
             ?>
         </div>
     </div>
-<!-- Este es el formulario que se oculta de agregarConsultorio -->
-<div id="frmConsultorio" title="Agregar Nuevo Consultorio">
-    <form id="agregarConsultorios">
+<!-- Este es el formulario que se oculta de editarMedico -->
+<div id="frmEditarA" title="Editar un Administrador">
+    <form id="editarAdministrador">
         <table>
             <tr>
-                <td>Numero</td>
-                <td><input type="number" name="ConNumero" id="ConNumero" required></td>
+                <td>Documento</td>
+                <td><input type="text" name="inputDocumento" id="inputDocumento" disabled></td>
             </tr>
             <tr>
-                <td>Nombre</td>
-                <td><input type="text" name="ConNombre" id="ConNombre" required></td>
-            </tr>
-        </table>
-    </form>
-</div>
-<!-- Este es el formulario que se oculta de editarConsultorio -->
-<div id="frmEditar" title="Editar un consultorio">
-    <form id="editarConsultorio">
-        <table>
-            <tr>
-                <td>Numero</td>
-                <td><input type="text" name="inputNumero" id="inputNumero" disabled></td>
+                <td>Correo</td>
+                <td><input type="email" name="inputCorreo" id="inputCorreo" required></td>
             </tr>
             <tr>
-                <td>Nombre</td>
-                <td><input type="text" name="inputNombre" id="inputNombre" required></td>
+                <td>Nombres</td>
+                <td><input type="text" name="inputNombres" id="inputNombres" required></td>
+            </tr>
+            <tr>
+                <td>Apellidos</td>
+                <td><input type="text" name="inputApellidos" id="inputApellidos" required></td>
             </tr>
         </table>
     </form>

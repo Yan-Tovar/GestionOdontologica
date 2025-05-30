@@ -78,12 +78,30 @@ public function consultarTratamientosPorDocumento($doc){
     $conexion->cerrar();
     return $result ;
 }
+public function consultarPacientePorid($doc){
+    $conexion = new Conexion();
+    $conexion->abrir();
+    $sql = "SELECT * FROM Pacientes WHERE PacIdentificacion = '$doc' ";
+    $conexion->consulta($sql);
+    $result = $conexion->obtenerUnaFila();
+    $conexion->cerrar();
+    return $result ;
+}
 public function consultarPaciente($doc){
     $conexion = new Conexion();
     $conexion->abrir();
     $sql = "SELECT * FROM Pacientes WHERE PacIdentificacion = '$doc' ";
     $conexion->consulta($sql);
     $result = $conexion->obtenerResult();
+    $conexion->cerrar();
+    return $result ;
+}
+public function validarPaciente($doc){
+    $conexion = new Conexion();
+    $conexion->abrir();
+    $sql = "SELECT PacIdentificacion FROM Pacientes Where PacIdentificacion = '$doc'";
+    $conexion->consulta($sql);
+    $result = $conexion->obtenerUnaFila();
     $conexion->cerrar();
     return $result ;
 }
@@ -96,6 +114,7 @@ public function validarCorreo($cor){
     $conexion->cerrar();
     return $result ;
 }
+
 public function agregarPaciente(Paciente $paciente){
     $conexion = new Conexion();
     $conexion->abrir();

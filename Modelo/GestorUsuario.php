@@ -119,5 +119,77 @@ public function agregarAdministrador(Administrador $administrador){
     $conexion->cerrar();
     return $filasAfectadas;
 }
+public function listarMedicos(){
+        $conexion = new Conexion();
+        $conexion->abrir();
+        $sql = "SELECT * FROM Medicos";
+        $conexion->consulta($sql);
+        $result = $conexion->obtenerResult();
+        $conexion->cerrar();
+        return $result ;
+}
+public function listarAdministradores(){
+        $conexion = new Conexion();
+        $conexion->abrir();
+        $sql = "SELECT * FROM Administradores";
+        $conexion->consulta($sql);
+        $result = $conexion->obtenerResult();
+        $conexion->cerrar();
+        return $result ;
+}
+public function editarMedico($doc, $cor, $nom, $ape){
+    $conexion = new Conexion();
+    $conexion->abrir();
+    $sql = "UPDATE Medicos SET MedIdentificacion = '$doc', MedCorreo = '$cor'
+    , MedNombres = '$nom', MedApellidos = '$ape' "
+    . " WHERE MedIdentificacion = $doc ";
+    $conexion->consulta($sql);
+    $filasAfectadas = $conexion->obtenerFilasAfectadas();
+    $conexion->cerrar();
+    return $filasAfectadas;
+}
+public function editarAdministrador($doc, $cor, $nom, $ape){
+    $conexion = new Conexion();
+    $conexion->abrir();
+    $sql = "UPDATE Administradores SET AdmIdentificacion = '$doc', AdmCorreo = '$cor'
+    , AdmNombres = '$nom', AdmApellidos = '$ape' "
+    . " WHERE AdmIdentificacion = $doc ";
+    $conexion->consulta($sql);
+    $filasAfectadas = $conexion->obtenerFilasAfectadas();
+    $conexion->cerrar();
+    return $filasAfectadas;
+}
+public function validarMedicoForaneo($doc){
+    $conexion = new Conexion();
+    $conexion->abrir();
+
+    $sql = "SELECT COUNT(*) AS cantidad FROM citas WHERE CitMedico = $doc;";
+    $conexion->consulta($sql);
+    $fila = $conexion->obtenerUnaFila();
+
+    $conexion->cerrar();
+
+    return $fila['cantidad'];
+}
+public function eliminarMedico($doc){
+    $conexion = new Conexion();
+    $conexion->abrir();
+    $sql = "DELETE FROM Medicos "
+    . " WHERE MedIdentificacion = '$doc' ";
+    $conexion->consulta($sql);
+    $filasAfectadas = $conexion->obtenerFilasAfectadas();
+    $conexion->cerrar();
+    return $filasAfectadas;
+}
+public function eliminarAdministrador($doc){
+    $conexion = new Conexion();
+    $conexion->abrir();
+    $sql = "DELETE FROM Administradores "
+    . " WHERE AdmIdentificacion = '$doc' ";
+    $conexion->consulta($sql);
+    $filasAfectadas = $conexion->obtenerFilasAfectadas();
+    $conexion->cerrar();
+    return $filasAfectadas;
+}
 }
 ?>

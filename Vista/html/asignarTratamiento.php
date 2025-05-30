@@ -20,12 +20,16 @@ if(isset($value)){
         <h1>Sistema de Gestión Odontológica</h1>
     </div>
     <ul id="menu">
-        <li><a href="index.php?accion=inicio" class="activa">inicio</a> </li>
+        <li><a href="index.php?accion=inicio" >inicio</a> </li>
         <li><a href="index.php?accion=asignar">Asignar</a> </li>
         <li><a href="index.php?accion=consultar">Consultar Cita</a> </li>
         <li><a href="index.php?accion=cancelar">Cancelar Cita</a> </li>
         <li><a href="index.php?accion=listarConsultorio">Consultorio</a></li>
-        <li><a href="index.php?accion=AasignarTratamientos">Tratamientos</a></li>
+        <li><a href="index.php?accion=AasignarTratamientos" class="activa">Tratamientos</a></li>
+        <li><a href="index.php?accion=listarMedicos">Medicos</a></li>        
+        <li><a href="index.php?accion=listarAdministradores">Administradores</a></li>
+        <li><a href="index.php?accion=descargarCitas">Excel Citas</a></li>
+    </ul>
     </ul>
     <div id="contenido">
         <h2>Asignar Tratamiento</h2>
