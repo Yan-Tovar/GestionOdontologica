@@ -84,7 +84,6 @@ public function agregarPaciente($cor, $con, $doc,$nom,$ape,$fec,$sex){
                     }, 3000);
                 </script>
                 ";
-                require_once 'Vista/html/inicio.php';
             } else {
                 echo "
                 <div id='noti' style='background-color:rgb(255, 51, 78); padding: 10px; margin: 10px; border: 1px solid blue;'>
@@ -189,7 +188,7 @@ public function agregarCita($doc,$med,$fec,$hor,$con){
     $cita = new Cita(null, $fec, $hor, $doc, $med, $con, "Solicitada",
     "Ninguna");
     $gestorUsuario = new GestorUsuario();
-    $result = $gestorUsuario->consultarMedicoPorDocumento($doc);
+    $result = $gestorUsuario->consultarMedicoPorDocumento($med);
     if ($result > 0){
          $gestorCita = new GestorCita();
         $result = $gestorCita->validarPaciente($doc);
@@ -276,7 +275,7 @@ public function consultarHorasDisponibles($medico,$fecha){
 public function verCita($cita){
     $gestorCita = new GestorCita();
     $result = $gestorCita->consultarCitaPorId($cita);
-    require_once 'Vista/html/confirmarCita.php';
+    require_once 'Vista/html/listarCita.php';
 }
 public function confirmarCancelarCita($cita){
     $gestorCita = new GestorCita();

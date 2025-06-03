@@ -155,49 +155,49 @@ try {
                 </tr>
                 <tr>
                     <td>Documento</td>
-                    <td><?php echo $fila->PacIdentificacion;?></td>
+                    <td><?php echo $pacDocumento;?></td>
                 </tr>
                 <tr>
                     <td>Nombre</td>
-                    <td><?php echo $fila->PacNombres . " " . $fila->PacApellidos;?></td>
+                    <td><?php echo $pacNombre;?></td>
                 </tr>
                 <tr>
                     <th colspan="2">Datos del Médico</th>
                 </tr>
                 <tr>
                     <td>Documento</td>
-                    <td><?php echo $fila->MedIdentificacion;?></td>
+                    <td><?php echo $medDocumento;?></td>
                 </tr>
                 <tr>
                     <td>Nombre</td>
-                    <td><?php echo $fila->MedNombres . " " . $fila->MedApellidos;?></td>
+                    <td><?php echo $medNombre;?></td>
                 </tr>
                 <tr>
                     <th colspan="2">Datos de la Cita</th>
                 </tr>
                 <tr>
                     <td>Número</td>
-                    <td><?php echo $fila->CitNumero;?></td>
+                    <td><?php echo $citaNumero;?></td>
                 </tr>
                 <tr>
                     <td>Fecha</td>
-                    <td><?php echo $fila->CitFecha;?></td>
+                    <td><?php echo $citaFecha;?></td>
                 </tr>
                 <tr>
                     <td>Hora</td>
-                    <td><?php echo $fila->CitHora;?></td>
+                    <td><?php echo $citaHora;?></td>
                 </tr>
                 <tr>
                     <td>Número de Consultorio</td>
-                    <td><?php echo $fila->ConNombre;?></td>
+                    <td><?php echo $consultorio;?></td>
                 </tr>
                 <tr>
                     <td>Estado</td>
-                    <td><?php echo $fila->CitEstado;?></td>
+                    <td><?php echo $estadoCita;?></td>
                 </tr>
                 <tr>
                     <td>Observaciones</td>
-                    <td><?php echo $fila->CitObservaciones;?></td>
+                    <td><?php echo $observaciones;?></td>
                 </tr>
             </table>
         </div>

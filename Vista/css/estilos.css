@@ -24,9 +24,23 @@ border: #d3d3d3 1px solid ;
 margin: 20px 20px 10px;
 padding: 10px 15px;
 }
+
 #contenido h2 {
 color : #0075ff;
 border-bottom: #CFBFB5 1px solid;
+}#contenido_v2 {
+border: #d3d3d3 1px solid ;
+margin: 20px 20px 10px;
+padding: 10px 15px;
+}
+#contenido_v2 h2 {
+color : #0075ff;
+border-bottom: #CFBFB5 1px solid;
+}
+div#contenido_v2 {
+border: #d3d3d3 1px solid ;
+margin: 0px 0px 0px 10px;
+padding: 10px 15px;
 }
 #menu {
 float: left;
@@ -126,6 +140,10 @@ background-color: #7092be;
     width: 100%;
     justify-content: space-between;
     color: rgb(181, 181, 247);
+}
+.contenedor_v2{
+    display: flex;
+    width: 100%;
 }
 .informacion{
     width: 30%;

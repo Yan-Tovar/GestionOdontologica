@@ -9,9 +9,36 @@
         <div id="encabezado">
             <h1>Sistema de Gestión Odontológica</h1>
         </div>
-        <ul id="menu">
-            <li onclick="history.back()">Volver atrás</li>
-        </ul>
+        <?php
+        if($_SESSION["rol"] == "Paciente"){
+            echo "
+            <ul id='menu'>
+                <li><a href='index.php?accion=Pinicio' class='activa'>inicio</a> </li>
+                <li><a href='index.php?accion=verCitas'>Citas</a></li>
+                <li><a href='index.php?accion=verTratamientos'>Tratamientos</a></li>
+            </ul> ";
+        }elseif($_SESSION["rol"] == "Medico"){
+            echo "
+            <ul id='menu'>
+                <li><a href='index.php?accion=Minicio' class='activa'>inicio</a> </li>
+                <li><a href='index.php?accion=MverCitas'>Citas</a></li>
+                <li><a href='index.php?accion=asignarTratamientos'>Tratamientos</a></li>
+            </ul> ";
+        }else{
+            echo "
+            <ul id='menu'>
+                <li><a href='index.php?accion=inicio' class='activa'>inicio</a> </li>
+                <li><a href='index.php?accion=asignar'>Asignar</a> </li>
+                <li><a href='index.php?accion=consultar'>Consultar Cita</a> </li>
+                <li><a href='index.php?accion=cancelar'>Cancelar Cita</a> </li>
+                <li><a href='index.php?accion=listarConsultorio'>Consultorio</a></li>
+                <li><a href='index.php?accion=AasignarTratamientos'>Tratamientos</a></li>
+                <li><a href='index.php?accion=listarMedicos'>Medicos</a></li>        
+                <li><a href='index.php?accion=listarAdministradores'>Administradores</a></li>
+                <li><a href='index.php?accion=descargarCitas'>Excel Citas</a></li>
+            </ul> ";
+        }
+        ?>
         <div id="contenido">
             <?php $fila = $result->fetch_object();?>
             <h2>Información Tratamiento</h2>

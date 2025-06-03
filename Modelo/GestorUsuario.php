@@ -58,7 +58,7 @@ public function consultarUsuarioA($correo, $contrasena) {
 public function consultarMedicoPorDocumento($doc){
     $conexion = new Conexion();
     $conexion->abrir();
-    $sql = "SELECT MedIdentificacion FROM Medicos Where MedIdentificacion = '$doc'";
+    $sql = "SELECT MedIdentificacion FROM medicos WHERE MedIdentificacion = '$doc' ";
     $conexion->consulta($sql);
     $result = $conexion->obtenerUnaFila();
     $conexion->cerrar();

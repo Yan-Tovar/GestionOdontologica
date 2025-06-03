@@ -5,7 +5,7 @@
         <tr>
             <th>Numero </th><th>Fecha Asignación </th>
             <th>Descripcion </th><th>Fecha Inicio </th>
-            <th>Fecha Fin </th><th>Observaciones </th><th>Paciente </th>
+            <th>Fecha Fin </th><th>Observaciones </th>
         <?php
         while($fila=$result->fetch_object()){
             ?>
@@ -16,7 +16,6 @@
                 <td><?php echo $fila->TraFechaInicio;?></td>
                 <td><?php echo $fila->TraFechaFin;?></td>
                 <td><?php echo $fila->TraObservaciones;?></td>
-                <td><?php echo $fila->TraPaciente;?></td>
             </tr>
             <?php
         }

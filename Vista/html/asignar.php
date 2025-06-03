@@ -44,9 +44,10 @@ if(isset($value) && $_SESSION['rol'] == 'Administrador'){
                 <tr>
                     <td colspan="2"><input type="button" value="Consultar" name="asignarConsultar" id="asignarConsultar" onclick="consultarPaciente()"></td>
                 </tr>
-                <tr><td colspan="2">
-                    <div id="paciente"></div>
-                </td>
+                <tr>
+                    <td colspan="2">
+                        <div id="paciente"></div>
+                    </td>
                 </tr>
                 <tr>
                     <td>Médico</td>
