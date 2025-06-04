@@ -55,7 +55,16 @@ elseif($_GET["accion"] == "verTratamientos"){
     $controlador->verPagina('Vista/html/P_verTratamientos.php');
 }
 elseif($_GET["accion"] == "asignarTratamientos"){
-    $controlador->verPagina('Vista/html/M_asignarTratamiento.php');
+    if(isset($_POST['pacienteDoc'])){
+        $Id=$_POST['pacienteDoc'];
+        $IdCita=$_POST['citaNumero'];
+        $controlador->cargarTratamiento($Id, $IdCita);
+    }else{
+        $Id=0;
+        $IdCita=0;
+        $controlador->cargarTratamiento($Id, $IdCita);
+    }
+    
 }
 elseif($_GET["accion"] == "AasignarTratamientos"){
     $controlador->verPagina('Vista/html/asignarTratamiento.php');
@@ -120,16 +129,20 @@ elseif($_GET["accion"] == "guardarCita"){
 }
 elseif($_GET["accion"] == "guardarTratamiento"){
     $controlador->agregarTratamiento(
-$_POST["fechaAsignacion"],
-$_POST["descripcion"],
-$_POST["fechaInicio"],
-$_POST["fechaFin"],
-$_POST["observaciones"],
-$_POST["asignarDocumento"],);
+    $_POST["CitNumero"],
+    $_POST["fechaAsignacion"],
+    $_POST["descripcion"],
+    $_POST["fechaInicio"],
+    $_POST["fechaFin"],
+    $_POST["observaciones"],
+    $_POST["asignarDocumento"],);
 
 }
 elseif($_GET["accion"] == "consultarCita"){
     $controlador->consultarCitas($_GET["consultarDocumento"]);
+}
+elseif($_GET["accion"] == "consultarCitaA"){
+    $controlador->consultarCitasA($_GET["consultarDocumento"]);
 }
 elseif($_GET["accion"] == "descargarCitas"){
     $controlador->descargarCitas();

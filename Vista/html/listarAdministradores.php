@@ -25,13 +25,11 @@ if(isset($value) && $_SESSION['rol'] == 'Administrador'){
         <li><a href="index.php?accion=consultar">Consultar Cita</a> </li>
         <li><a href="index.php?accion=cancelar">Cancelar Cita</a></li>
         <li><a href="index.php?accion=listarConsultorio"></a>Consultorios</li>
-        <li><a href="index.php?accion=AasignarTratamientos">Tratamientos</a></li>
         <li><a href="index.php?accion=listarMedicos">Medicos</a></li>        
         <li><a href="index.php?accion=listarAdministradores" class="activa">Administradores</a></li>
         <li><a href="index.php?accion=descargarCitas">Excel Citas</a></li>
     </ul>
-    </ul>
-    <div id="contenido">        
+    </ul>       
         <div id="contenido">
             <h2>Administradores</h2>
             <table>
@@ -85,7 +83,6 @@ if(isset($value) && $_SESSION['rol'] == 'Administrador'){
             }
             ?>
         </div>
-    </div>
 <!-- Este es el formulario que se oculta de editarMedico -->
 <div id="frmEditarA" title="Editar un Administrador">
     <form id="editarAdministrador">

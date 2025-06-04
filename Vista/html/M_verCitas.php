@@ -21,7 +21,6 @@ if (isset($value) && $_SESSION['rol'] == 'Medico'){
     <ul id="menu">
         <li><a href="index.php?accion=Minicio">inicio</a> </li>
         <li><a href="index.php?accion=MverCitas" class="activa">Citas</a> </li>
-        <li><a href="index.php?accion=asignarTratamientos">Tratamientos</a> </li>
     </ul>
     <div id="contenido">
         <h2>Consultar Cita</h2>

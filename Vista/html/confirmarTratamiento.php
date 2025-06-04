@@ -32,7 +32,6 @@
                 <li><a href='index.php?accion=consultar'>Consultar Cita</a> </li>
                 <li><a href='index.php?accion=cancelar'>Cancelar Cita</a> </li>
                 <li><a href='index.php?accion=listarConsultorio'>Consultorio</a></li>
-                <li><a href='index.php?accion=AasignarTratamientos'>Tratamientos</a></li>
                 <li><a href='index.php?accion=listarMedicos'>Medicos</a></li>        
                 <li><a href='index.php?accion=listarAdministradores'>Administradores</a></li>
                 <li><a href='index.php?accion=descargarCitas'>Excel Citas</a></li>

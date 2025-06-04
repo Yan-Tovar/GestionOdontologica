@@ -206,7 +206,14 @@ public function agregarCita($doc,$med,$fec,$hor,$con){
     }
     
 }
-public function agregarTratamiento($fechaA,$des,$fechaI,$fechaF, $obs,$doc){
+public function cargarTratamiento($pacId, $CitId){
+    if($pacId>0 && $CitId>0){
+    $IdPac=$pacId;
+    $IdCit=$CitId;
+    }
+    require_once 'Vista/html/asignarTratamiento.php';
+}
+public function agregarTratamiento($CitNumero, $fechaA,$des,$fechaI,$fechaF, $obs,$doc){
     $gestorCita = new GestorCita();
     $result = $gestorCita->validarPaciente($doc);
     if($result > 0){
@@ -214,6 +221,7 @@ public function agregarTratamiento($fechaA,$des,$fechaI,$fechaF, $obs,$doc){
         $gestorTratamiento = new GestorTratamiento();
         $id = $gestorTratamiento->agregarTratamiento($tratamiento);
         $result = $gestorTratamiento->consultarTratamientoPorId($id);
+        $result2 = $gestorCita->cambiarEstadoCita($CitNumero);
         require_once 'Vista/html/confirmarTratamiento.php';
     }else{
         echo "<script>alert('¡¡Sin Registrar!! El Paciente con este documento no existe');</script>";
@@ -228,6 +236,11 @@ public function agregarTratamiento($fechaA,$des,$fechaI,$fechaF, $obs,$doc){
 public function consultarCitas($doc){
     $gestorCita = new GestorCita();
     $result = $gestorCita->consultarCitasPorDocumento($doc);
+    require_once 'Vista/html/consultarCitas.php';
+}
+public function consultarCitasA($doc){
+    $gestorCita = new GestorCita();
+    $result = $gestorCita->consultarCitasPorDocumentoA($doc);
     require_once 'Vista/html/consultarCitas.php';
 }
 public function consultarCitasMedico($doc){

@@ -25,7 +25,6 @@ if(isset($value) && $_SESSION['rol'] == 'Administrador'){
         <li><a href="index.php?accion=consultar" class="activa">Consultar Cita</a> </li>
         <li><a href="index.php?accion=cancelar">Cancelar Cita</a> </li>
         <li><a href="index.php?accion=listarConsultorio">Consultorio</a></li>
-        <li><a href="index.php?accion=AasignarTratamientos">Tratamientos</a></li>
         <li><a href="index.php?accion=listarMedicos">Medicos</a></li>        
         <li><a href="index.php?accion=listarAdministradores">Administradores</a></li>
         <li><a href="index.php?accion=descargarCitas">Excel Citas</a></li>
@@ -43,7 +42,7 @@ if(isset($value) && $_SESSION['rol'] == 'Administrador'){
                     </tr>
                     <tr>
                         <td colspan="2"><input type="button" name="consultarConsultar"
-                        value="Consultar" id="consultarConsultar" onclick="consultarCita()"></td>
+                        value="Consultar" id="consultarConsultar" onclick="consultarCitaA()"></td>
                     </tr>
                     <tr>
                         <td colspan="2"><div id="paciente2"></div></td>

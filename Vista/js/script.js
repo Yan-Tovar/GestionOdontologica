@@ -102,6 +102,11 @@ function consultarCita(){
     $("#consultarDocumento").val() ;
     $("#paciente2").load(url);
 }
+function consultarCitaA(){
+    url = "index.php?accion=consultarCitaA&consultarDocumento=" +
+    $("#consultarDocumento").val() ;
+    $("#paciente2").load(url);
+}
 function consultarCitaM(){
     url = "index.php?accion=consultarCitaMedico&consultarDocumento=" +
     $("#consultarDocumento").val() ;

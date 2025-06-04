@@ -1,6 +1,6 @@
 <?php
 $value=$_SESSION['us_id'];
-if(isset($value) && $_SESSION['rol'] == 'Administrador'){
+if(isset($value) && $_SESSION['rol'] == 'Administrador' || $_SESSION['rol'] == 'Medico'){
 ?>
 
 <!DOCTYPE html>

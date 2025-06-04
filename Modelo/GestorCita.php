@@ -43,12 +43,22 @@ public function consultarCitasPorDocumento($doc){
     $conexion->cerrar();
     return $result ;
 }
+public function consultarCitasPorDocumentoA($doc){
+    $conexion = new Conexion();
+    $conexion->abrir();
+    $sql = "SELECT * FROM citas "
+    . "WHERE CitPaciente = '$doc' ";
+    $conexion->consulta($sql);
+    $result = $conexion->obtenerResult();
+    $conexion->cerrar();
+    return $result ;
+}
 public function consultarCitasMPorDocumento($doc){
     $conexion = new Conexion();
     $conexion->abrir();
     $sql = "SELECT * FROM citas "
     . "WHERE CitMedico = '$doc' "
-    . " AND CitEstado = 'Solicitada' ";
+    . " AND CitEstado = 'Solicitada' ORDER BY CitFecha,CitHora";
     $conexion->consulta($sql);
     $result = $conexion->obtenerResult();
     $conexion->cerrar();
@@ -177,6 +187,16 @@ public function cancelarCita($cita){
     $conexion->abrir();
     $sql = "UPDATE citas SET CitEstado = 'Cancelada' "
     . " WHERE CitNumero = $cita ";
+    $conexion->consulta($sql);
+    $filasAfectadas = $conexion->obtenerFilasAfectadas();
+    $conexion->cerrar();
+    return $filasAfectadas;
+}
+public function cambiarEstadoCita($numero){
+    $conexion = new Conexion();
+    $conexion->abrir();
+    $sql = "UPDATE citas SET CitEstado = 'Cumplida' "
+    . " WHERE CitNumero = $numero ";
     $conexion->consulta($sql);
     $filasAfectadas = $conexion->obtenerFilasAfectadas();
     $conexion->cerrar();

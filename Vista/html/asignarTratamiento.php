@@ -19,27 +19,49 @@ if(isset($value)){
     <div id="encabezado">
         <h1>Sistema de Gestión Odontológica</h1>
     </div>
-    <ul id="menu">
-        <li><a href="index.php?accion=inicio" >inicio</a> </li>
-        <li><a href="index.php?accion=asignar">Asignar</a> </li>
-        <li><a href="index.php?accion=consultar">Consultar Cita</a> </li>
-        <li><a href="index.php?accion=cancelar">Cancelar Cita</a> </li>
-        <li><a href="index.php?accion=listarConsultorio">Consultorio</a></li>
-        <li><a href="index.php?accion=AasignarTratamientos" class="activa">Tratamientos</a></li>
-        <li><a href="index.php?accion=listarMedicos">Medicos</a></li>        
-        <li><a href="index.php?accion=listarAdministradores">Administradores</a></li>
-        <li><a href="index.php?accion=descargarCitas">Excel Citas</a></li>
+    <?php if($_SESSION['rol']=="Administrador"){
+        echo "
+        <ul id='menu'>
+            <li><a href='index.php?accion=inicio' >inicio</a> </li>
+            <li><a href='index.php?accion=asignar'>Asignar</a> </li>
+            <li><a href='index.php?accion=consultar' class='activa'>Consultar Cita</a> </li>
+            <li><a href='index.php?accion=cancelar'>Cancelar Cita</a> </li>
+            <li><a href='index.php?accion=listarConsultorio'>Consultorio</a></li>
+            <li><a href='index.php?accion=listarMedicos'>Medicos</a></li>        
+            <li><a href='index.php?accion=listarAdministradores'>Administradores</a></li>
+            <li><a href='index.php?accion=descargarCitas'>Excel Citas</a></li>
+        </ul>";
+    }else{
+        echo "
+        <ul id='menu'>
+        <li><a href='index.php?accion=Minicio'>inicio</a> </li>
+        <li><a href='index.php?accion=MverCitas'>Citas</a> </li>
     </ul>
+        ";
+    }?>
+    
     </ul>
     <div id="contenido">
         <h2>Asignar Tratamiento</h2>
         <form id="frmasignar" action="index.php?accion=guardarTratamiento" method="post">
             <table>
-                <tr>
-                    <td>Documento del paciente</td>
-                    <td><input type="text" name="asignarDocumento" id="asignarDocumento" required></td>
-                </tr>
-                <tr>
+
+                <?php if(isset($IdCit)){
+                ?>
+            <tr>
+                <td>
+                    <input type="hidden" value="<?php echo $IdCit ?>" id="CitNumero" name="CitNumero">
+                </td>
+            </tr>
+            <?php
+            }?>
+            <tr>
+                <td>Documento</td>
+
+                <td><input type="text" name="asignarDocumento"
+
+                id="asignarDocumento" <?php if (isset($IdPac)){echo "readonly";} ?> value="<?php if(isset($IdPac)){ echo $IdPac; }?>"></td>
+            </tr>
                     <td colspan="2"><input type="button" value="Consultar" name="asignarConsultar" id="asignarConsultar" onclick="consultarPaciente()"></td>
                 </tr>
                 <tr><td colspan="2">
@@ -85,11 +107,12 @@ if(isset($value)){
             </table>
         </form> 
         <hr>
+        <h2>Listar Tratamientos</h2>
         <table>
             <tr>
                 Ingrese el documento del Paciente
                 <td><input type="text" name="consultarDocumento"
-                id="consultarDocumento"></td>
+                id="consultarDocumento" <?php if (isset($IdPac)){echo "readonly";} ?> value="<?php if(isset($IdPac)){ echo $IdPac; }?>"></td>
             </tr>
             <tr>
                 <td colspan="2"><input type="button" name="consultarConsultar"
