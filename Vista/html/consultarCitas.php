@@ -24,7 +24,12 @@ and open the template in the editor.
                     <td><?php echo $fila->CitNumero;?></td>
                     <td><?php echo $fila->CitFecha;?></td>
                     <td><?php echo $fila->CitHora;?></td>
-                    <td><a href="index.php?accion=verCita&numero=<?php echo $fila->CitNumero;?>">Ver</a></td>
+                    <?php 
+                    $clave="ClaveUsuario";
+                    $numero_cita= $fila->CitNumero;
+                    $encriptado = base64_encode(openssl_encrypt($numero_cita, "AES-256-CBC", $clave, 0, "1234567890123456"));
+                    echo "<td><a href='verCita/$encriptado'>Ver</a></td>";
+                    ?>
                 </tr>
                 <?php
             }

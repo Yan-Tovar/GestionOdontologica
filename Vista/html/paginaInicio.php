@@ -7,7 +7,7 @@
 <body class="fondo">
     <div class="contenedorInicio"></div>
     <div class="contenedorBoton">
-        <a href="index.php?accion=login" class="boton_a">Iniciar Sesion</a>
+        <a href="login" class="boton_a">Iniciar Sesion</a>
     </div> 
     <div class="separador-curvo">
     </div>

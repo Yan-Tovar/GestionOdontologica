@@ -14,8 +14,8 @@ if (isset($value) && $_SESSION['rol'] == 'Medico'){
         <h1>Sistema de Gestión Odontológica</h1>
     </div>
     <ul id="menu">
-        <li><a href="index.php?accion=Minicio" class="activa">inicio</a> </li>
-        <li><a href="index.php?accion=MverCitas">Citas</a> </li>
+        <li><a href="Minicio" class="activa">inicio</a> </li>
+        <li><a href="MverCitas">Citas</a> </li>
     </ul>
     <div id="contenido">
         <h2>Información General</h2>
@@ -27,7 +27,7 @@ if (isset($value) && $_SESSION['rol'] == 'Medico'){
             <li>asignar Tratamientos</li>
         </ul>
         </p>
-        <a href="index.php?accion=cerrarSesion"> 
+        <a href="cerrarSesion"> 
             <button>Cerrar Sesion</button>
         </a>
     </div>

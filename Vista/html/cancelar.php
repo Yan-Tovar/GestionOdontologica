@@ -20,15 +20,14 @@ if(isset($value) && $_SESSION['rol'] == 'Administrador'){
         <h1>Cancelar Cita</h1>
     </div>
     <ul id="menu">
-        <li><a href="index.php?accion=inicio">inicio</a> </li>
-        <li><a href="index.php?accion=asignar">Asignar</a> </li>
-        <li><a href="index.php?accion=consultar">Consultar Cita</a> </li>
-        <li><a href="index.php?accion=cancelar" class="activa">Cancelar Cita</a> </li>
-        <li><a href="index.php?accion=listarConsultorio">Consultorio</a></li>
-        <li><a href="index.php?accion=listarMedicos">Medicos</a></li>        
-        <li><a href="index.php?accion=listarAdministradores">Administradores</a></li>
-        <li><a href="index.php?accion=descargarCitas">Excel Citas</a></li>
-    </ul>
+        <li><a href="inicio">inicio</a> </li>
+        <li><a href="asignar">Asignar</a> </li>
+        <li><a href="consultar">Consultar Cita</a> </li>
+        <li><a href="cancelar" class="activa">Cancelar Cita</a> </li>
+        <li><a href="listarConsultorio">Consultorio</a></li>
+        <li><a href="listarMedicos">Medicos</a></li>        
+        <li><a href="listarAdministradores">Administradores</a></li>
+        <li><a href="descargarCitas">Excel Citas</a></li>
     </ul>
     <div id="contenido">
         <div id="contenido">

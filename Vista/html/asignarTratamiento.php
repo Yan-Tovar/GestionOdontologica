@@ -34,8 +34,8 @@ if(isset($value)){
     }else{
         echo "
         <ul id='menu'>
-        <li><a href='index.php?accion=Minicio'>inicio</a> </li>
-        <li><a href='index.php?accion=MverCitas'>Citas</a> </li>
+        <li><a href='Minicio'>inicio</a> </li>
+        <li><a href='MverCitas'>Citas</a> </li>
     </ul>
         ";
     }?>

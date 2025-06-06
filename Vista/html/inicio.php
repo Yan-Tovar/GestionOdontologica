@@ -14,14 +14,14 @@ if(isset($value) && $_SESSION['rol'] == 'Administrador'){
         <h1>Sistema de Gestión Odontológica</h1>
     </div>
     <ul id="menu">
-        <li><a href="index.php?accion=inicio" class="activa">inicio</a> </li>
-        <li><a href="index.php?accion=asignar">Asignar</a> </li>
-        <li><a href="index.php?accion=consultar">Consultar Cita</a> </li>
-        <li><a href="index.php?accion=cancelar">Cancelar Cita</a> </li>
-        <li><a href="index.php?accion=listarConsultorio">Consultorio</a></li>
-        <li><a href="index.php?accion=listarMedicos">Medicos</a></li>        
-        <li><a href="index.php?accion=listarAdministradores">Administradores</a></li>
-        <li><a href="index.php?accion=descargarCitas">Excel Citas</a></li>
+        <li><a href="inicio" class="activa">inicio</a> </li>
+        <li><a href="asignar">Asignar</a> </li>
+        <li><a href="consultar">Consultar Cita</a> </li>
+        <li><a href="cancelar">Cancelar Cita</a> </li>
+        <li><a href="listarConsultorio">Consultorio</a></li>
+        <li><a href="listarMedicos">Medicos</a></li>        
+        <li><a href="listarAdministradores">Administradores</a></li>
+        <li><a href="descargarCitas">Excel Citas</a></li>
     </ul>
     <div id="contenido">
         <h2>Información General</h2>
@@ -40,7 +40,7 @@ if(isset($value) && $_SESSION['rol'] == 'Administrador'){
         <table>
             <tr>
                 <td>
-                     <a href="index.php?accion=registrarFuncionario">
+                     <a href="registrarFuncionario">
             <button>Registrar Funcionario</button>
         </a>
                 </td>
@@ -51,7 +51,7 @@ if(isset($value) && $_SESSION['rol'] == 'Administrador'){
                 </td>
                 </tr>
         </table>
-        <a href="index.php?accion=cerrarSesion"> 
+        <a href="cerrarSesion"> 
             <button>Cerrar Sesion</button>
         </a>
     </div>

@@ -14,9 +14,11 @@ if(isset($value) && $_SESSION['rol'] == 'Paciente'){
         <h1>Sistema de Gestión Odontológica</h1>
     </div>
     <ul id="menu">
-        <li><a href="index.php?accion=Pinicio" class="activa">inicio</a> </li>
-        <li><a href="index.php?accion=verCitas">Citas</a> </li>
-        <li><a href="index.php?accion=verTratamientos">Tratamientos</a></li>
+        <li><a href="Pinicio" class="activa">inicio</a> </li>
+        <li><a href="verCitas">Citas</a> </li>
+        <li><a href="PcancelarCita">Cancelar Cita</a> </li>
+        <li><a href="verTratamientos">Tratamientos</a></li>
+        
     </ul>
     <div id="contenido">
         <h2>Información General</h2>

@@ -21,26 +21,27 @@ if(isset($value) && $_SESSION['rol'] == 'Paciente'){
     <ul id="menu">
         <li><a href="Pinicio">inicio</a> </li>
         <li><a href="verCitas">Citas</a> </li>
-        <li><a href="PcancelarCita">Cancelar Cita</a> </li>
-        <li><a href="verTratamientos"class="activa">Tratamientos</a> </li>
+        <li><a href="PcancelarCita" class="activa">Cancelar Cita</a> </li>
+        <li><a href="verTratamientos">Tratamientos</a> </li>
     </ul>
     <div id="contenido">
-        <h2>Consultar Tratamientos</h2>
-        <form action="#"  id="frmconsultar">
-            <table>
-                <tr>
-                    <td><input type="hidden" name="consultarDocumento"
-                    id="consultarDocumento" value="<?php echo $_SESSION['us_id'] ?>"></td>
-                </tr>
-                <tr>
-                    <td colspan="2"><input type="button" name="consultarConsultar"
-                    value="Consultar" id="consultarConsultar" onclick="consultarTratamientos()"></td>
-                </tr>
-                <tr>
-                    <td colspan="2"><div id="paciente2"></div></td>
-                </tr>
-            </table>
-        </form>
+        <h2>Cancelar Cita</h2>
+            <form action="index.php?accion=cancelarCita" method="post"
+                id="frmcancelar">
+                <table>
+                    <tr>
+                        <td><input type="hidden" value="<?php echo $_SESSION['us_id'] ?>" name="cancelarDocumento"
+                        id="cancelarDocumento"required></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><input type="button" value="Consultar" 
+                        onclick="cancelarCita()"></td>
+                        </tr>
+                    <tr>
+                        <td colspan="2"><div id="paciente3"></div></td>
+                    </tr>
+                </table>
+            </form>
     </div>
 </div>
 </body>

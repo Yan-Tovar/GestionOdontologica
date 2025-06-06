@@ -1,13 +1,18 @@
+<?php
+$value=$_SESSION['us_id'];
+if(isset($value) && $_SESSION['rol'] == 'Administrador'){
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
     <title></title>
-    <link rel="stylesheet" type="text/css" href="Vista/css/estilos.css">
-    <link href="Vista/jquery/jquery-ui-1.12.1.custom/jquery-ui.min.css" rel="stylesheet" type="text/css"/>
-    <script type="text/javascript" src="vista/jquery/jquery.js" ></script>
-    <script src="Vista/js/script.js" type="text/javascript"></script>
-    <script src="Vista/jquery/jquery-3.2.1.min.js" type="text/javascript"></script>
-    <script src="Vista/jquery/jquery-ui-1.12.1.custom/jquery-ui.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="/GestionOdontologica/Vista/css/estilos.css">
+    <link href="/GestionOdontologica/Vista/jquery/jquery-ui-1.12.1.custom/jquery-ui.min.css" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" src="/GestionOdontologica/vista/jquery/jquery.js" ></script>
+    <script src="/GestionOdontologica/Vista/js/script.js" type="text/javascript"></script>
+    <script src="/GestionOdontologica/Vista/jquery/jquery-3.2.1.min.js" type="text/javascript"></script>
+    <script src="/GestionOdontologica/Vista/jquery/jquery-ui-1.12.1.custom/jquery-ui.js" type="text/javascript"></script>
 </head>
 <body>
     <?php 
@@ -32,37 +37,43 @@
         if($_SESSION["rol"] == "Paciente"){
             echo "
             <ul id='menu'>
-                <li><a href='index.php?accion=Pinicio'>inicio</a> </li>
-                <li><a href='index.php?accion=verCitas' class='activa'>Citas</a></li>
-                <li><a href='index.php?accion=verTratamientos'>Tratamientos</a></li>
+                <li><a href='/GestionOdontologica/Pinicio'>inicio</a> </li>
+                <li><a href='/GestionOdontologica/verCitas' class='activa'>Citas</a></li>
+                <li><a href='/GestionOdontologica/verTratamientos'>Tratamientos</a></li>
             </ul> ";
         }elseif($_SESSION["rol"] == "Medico"){
             echo "
             <ul id='menu'>
-                <li><a href='index.php?accion=Minicio'>inicio</a> </li>
-                <li><a href='index.php?accion=MverCitas' class='activa'>Citas</a></li>
+                <li><a href='/GestionOdontologica/Minicio'>inicio</a> </li>
+                <li><a href='/GestionOdontologica/MverCitas' class='activa'>Citas</a></li>
             </ul> ";
         }else{
             echo "
             <ul id='menu'>
-                <li><a href='index.php?accion=inicio'>inicio</a> </li>
-                <li><a href='index.php?accion=asignar'>Asignar</a> </li>
-                <li><a href='index.php?accion=consultar' class='activa'>Consultar Cita</a> </li>
-                <li><a href='index.php?accion=cancelar'>Cancelar Cita</a> </li>
-                <li><a href='index.php?accion=listarConsultorio'>Consultorio</a></li>
-                <li><a href='index.php?accion=listarMedicos'>Medicos</a></li>        
-                <li><a href='index.php?accion=listarAdministradores'>Administradores</a></li>
-                <li><a href='index.php?accion=descargarCitas'>Excel Citas</a></li>
+                <li><a href='/GestionOdontologica/inicio'>inicio</a> </li>
+                <li><a href='/GestionOdontologica/asignar'>Asignar</a> </li>
+                <li><a href='/GestionOdontologica/consultar' class='activa'>Consultar Cita</a> </li>
+                <li><a href='/GestionOdontologica/cancelar'>Cancelar Cita</a> </li>
+                <li><a href='/GestionOdontologica/listarConsultorio'>Consultorio</a></li>
+                <li><a href='/GestionOdontologica/listarMedicos'>Medicos</a></li>        
+                <li><a href='/GestionOdontologica/listarAdministradores'>Administradores</a></li>
+                <li><a href='/GestionOdontologica/descargarCitas'>Excel Citas</a></li>
             </ul> ";
         }
         ?>
         <div id="contenido">
                 <h2>Información Cita</h2>
-                <form action="index.php?accion=asignarTratamientos" method="post">
-                    <input type="hidden" value="<?php echo $pacDocumento; ?>" id="pacienteDoc" name="pacienteDoc">
-                    <input type="hidden" value="<?php echo $citaNumero; ?>" id="citaNumero" name="citaNumero">
-                    <input type="submit" value="Asignar Tratamiento">
-                </form>
+                <?php
+                if($_SESSION['rol']=="Administrador" || $_SESSION['rol']=="Medico"){
+                    ?>
+                    <form action='/GestionOdontologica/asignarTratamientos' method='post'>
+                        <input type='hidden' value='<?php echo $pacDocumento; ?>' id='pacienteDoc' name='pacienteDoc'>
+                        <input type='hidden' value='<?php echo $citaNumero; ?>' id='citaNumero' name='citaNumero'>
+                        <input type='submit' value='Asignar Tratamiento'>
+                    </form>
+                    <?php
+                }
+                ?>
                 <table>
                     <tr>
                         <th colspan="2">Datos del Paciente</th>
@@ -142,3 +153,8 @@
     </div>
 </body>
 </html>
+<?php
+}else{
+    header("Location: index.php");
+}
+?>

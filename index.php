@@ -42,6 +42,9 @@ elseif($_GET["accion"] == "consultar"){
 elseif($_GET["accion"] == "cancelar"){
     $controlador->verPagina('Vista/html/cancelar.php');
 }
+elseif($_GET["accion"] == "PcancelarCita"){
+    $controlador->verPagina('Vista/html/P_cancelarCitas.php');
+}
 elseif($_GET["accion"] == "consultorio"){
     $controlador->verPagina('Vista/html/consultorios.php');
 }
@@ -183,7 +186,15 @@ elseif($_GET["accion"] == "consultarHora"){
     $controlador->consultarHorasDisponibles($_GET["medico"], $_GET["fecha"]);
 }
 elseif($_GET["accion"] == "verCita"){
-    $controlador->verCita($_GET["numero"]);
+    $clave = "ClaveUsuario";
+    $numero_cita_encriptado = $_GET["numero"];
+    $numero_cita = openssl_decrypt(base64_decode($numero_cita_encriptado), "AES-256-CBC", $clave, 0, "1234567890123456");
+    if($numero_cita){
+        $controlador->verCita($numero_cita);
+    }else{
+        echo "Error: acceso denegado";
+        exit();
+    }
 }
 elseif($_GET["accion"] == "confirmarCancelar"){
     $controlador->confirmarCancelarCita($_GET["numero"]);

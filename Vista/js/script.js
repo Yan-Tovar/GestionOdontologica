@@ -113,7 +113,7 @@ function consultarCitaM(){
     $("#paciente2").load(url);
 }
 function consultarTratamientos(){
-    url = "index.php?accion=consultarTratamientos&consultarDocumento=" +
+    url = "/GestionOdontologica/index.php?accion=consultarTratamientos&consultarDocumento=" +
     $("#consultarDocumento").val() ;
     $("#paciente2").load(url);
 }

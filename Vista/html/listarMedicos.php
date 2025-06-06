@@ -20,14 +20,14 @@ if(isset($value) && $_SESSION['rol'] == 'Administrador'){
         <h1>Sistema de Gestión Odontológica</h1>
     </div>
     <ul id="menu">
-        <li><a href="index.php?accion=inicio">inicio</a> </li>
-        <li><a href="index.php?accion=asignar">Asignar</a> </li>
-        <li><a href="index.php?accion=consultar">Consultar Cita</a> </li>
-        <li><a href="index.php?accion=cancelar">Cancelar Cita</a></li>
-        <li><a href="index.php?accion=listarConsultorio"></a>Consultorios</li>
-        <li><a href="index.php?accion=listarMedicos" class="activa">Medicos</a></li>        
-        <li><a href="index.php?accion=listarAdministradores">Administradores</a></li>
-        <li><a href="index.php?accion=descargarCitas">Excel Citas</a></li>
+        <li><a href="inicio">inicio</a> </li>
+        <li><a href="asignar">Asignar</a> </li>
+        <li><a href="consultar">Consultar Cita</a> </li>
+        <li><a href="cancelar">Cancelar Cita</a></li>
+        <li><a href="listarConsultorio"></a>Consultorios</li>
+        <li><a href="listarMedicos" class="activa">Medicos</a></li>        
+        <li><a href="listarAdministradores">Administradores</a></li>
+        <li><a href="descargarCitas">Excel Citas</a></li>
     </ul>
     </ul>       
         <div id="contenido">
