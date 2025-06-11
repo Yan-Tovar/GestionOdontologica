@@ -124,6 +124,14 @@ try {
 <head>
     <title></title>
     <link rel="stylesheet" type="text/css" href="Vista/css/estilos.css">
+    <link href="Vista/jquery/jquery-ui-1.12.1.custom/jquery-ui.min.css" rel="stylesheet" type="text/css"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <script type="text/javascript" src="vista/jquery/jquery.js" ></script>
+    <script src="Vista/js/script.js" type="text/javascript"></script>
+    <script src="Vista/jquery/jquery-3.2.1.min.js" type="text/javascript"></script>
+    <script src="Vista/jquery/jquery-ui-1.12.1.custom/jquery-ui.js" type="text/javascript"></script>
     <script>
         // Descargar automáticamente
         window.onload = function () {
@@ -142,14 +150,21 @@ try {
             <h1>Sistema de Gestión Odontológica</h1>
         </div>
         <ul id="menu">
-            <li onclick="history.back()">Volver atrás</li>
+            <li><a href="inicio"><i class="material-icons-outlined">home</i> inicio</a> </li>
+            <li><a href="asignar" class="activa"><i class="material-icons-outlined">assignment</i>Asignar</a> </li>
+            <li><a href="consultar"><i class="material-icons-outlined">search</i>Consultar Cita</a> </li>
+            <li><a href="cancelar"><i class="material-icons-outlined">cancel</i>Cancelar Cita</a> </li>
+            <li><a href="listarConsultorio"><i class="material-icons-outlined">apartment</i>Consultorio</a> </li>
+            <li><a href="listarMedicos"><i class="material-icons-outlined">group</i>Medicos</a> </li>        
+            <li><a href="listarAdministradores"><i class="material-icons-outlined">group_add</i>Administradores</a> </li>
+            <li><a href="descargarCitas"><i class="material-icons-outlined">table_view</i>Excel Citas</a></li>
         </ul>
-        <div id="contenido">
+        <div class="contenido">
             <h1>Ficha de la cita generada correctamente</h1>
             <p>El PDF fue generado y descargado automáticamente. Si no se descargó, <a href="<?php echo $archivoPDF; ?>" download>haz clic aquí</a>.</p>
             <?php $fila = $result->fetch_object();?>
             <h2>Información Cita</h2>
-            <table>
+            <table class="table">
                 <tr>
                     <th colspan="2">Datos del Paciente</th>
                 </tr>

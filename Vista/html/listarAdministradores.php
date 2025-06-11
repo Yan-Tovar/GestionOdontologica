@@ -9,6 +9,9 @@ if(isset($value) && $_SESSION['rol'] == 'Administrador'){
     <title>Sistema de Gestión Odontológica</title>
     <link rel="stylesheet" type="text/css" href="Vista/css/estilos.css">
     <link href="Vista/jquery/jquery-ui-1.12.1.custom/jquery-ui.min.css" rel="stylesheet" type="text/css"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
     <script type="text/javascript" src="vista/jquery/jquery.js" ></script>
     <script src="Vista/js/script.js" type="text/javascript"></script>
     <script src="Vista/jquery/jquery-3.2.1.min.js" type="text/javascript"></script>
@@ -20,22 +23,21 @@ if(isset($value) && $_SESSION['rol'] == 'Administrador'){
         <h1>Sistema de Gestión Odontológica</h1>
     </div>
     <ul id="menu">
-        <li><a href="inicio">inicio</a> </li>
-        <li><a href="asignar">Asignar</a> </li>
-        <li><a href="consultar">Consultar Cita</a> </li>
-        <li><a href="cancelar">Cancelar Cita</a></li>
-        <li><a href="listarConsultorio"></a>Consultorios</li>
-        <li><a href="listarMedicos">Medicos</a></li>        
-        <li><a href="listarAdministradores" class="activa">Administradores</a></li>
-        <li><a href="descargarCitas">Excel Citas</a></li>
-    </ul>
-    </ul>       
-        <div id="contenido">
+        <li><a href="inicio"><i class="material-icons-outlined">home</i> inicio</a> </li>
+        <li><a href="asignar"><i class="material-icons-outlined">assignment</i>Asignar</a> </li>
+        <li><a href="consultar"><i class="material-icons-outlined">search</i>Consultar Cita</a> </li>
+        <li><a href="cancelar"><i class="material-icons-outlined">cancel</i>Cancelar Cita</a> </li>
+        <li><a href="listarConsultorio"><i class="material-icons-outlined">apartment</i>Consultorio</a> </li>
+        <li><a href="listarMedicos"><i class="material-icons-outlined">group</i>Medicos</a> </li>        
+        <li><a href="listarAdministradores" class="activa"><i class="material-icons-outlined">group_add</i>Administradores</a> </li>
+        <li><a href="descargarCitas"><i class="material-icons-outlined">table_view</i>Excel Citas</a></li>
+    </ul>     
+        <div class="contenido">
             <h2>Administradores</h2>
             <table>
                 <tr>
                     <td>
-                        <a href="registrarFuncionario">Agregar</a>
+                        <a href="registrarFuncionario" class="btn-verde">Agregar</a>
                     </td>
                 </tr>
                 <tr>
@@ -47,10 +49,10 @@ if(isset($value) && $_SESSION['rol'] == 'Administrador'){
             <?php
                 if($result->num_rows > 0){
             ?>
-            <table>
+            <table class="table">
                 <tr>
-                    <th>Identificacion |</th><th>Correo |</th><th>Nombre |</th>
-                    <th>Apellidos |</th>
+                    <th>Identificacion</th><th>Correo</th><th>Nombre</th>
+                    <th>Apellidos</th><th>Acciones</th>
                 </tr>
                 <?php
                     while($fila=$result->fetch_object()){
@@ -62,11 +64,11 @@ if(isset($value) && $_SESSION['rol'] == 'Administrador'){
                     <td><?php echo $fila->AdmApellidos; $ape= $fila->AdmApellidos;?></td>
                     <td>
                         <!-- Editar Consultorio -->
-                        <input type="button" value="Editar" name="editarAdministrador" id="editarAdministrador"
+                        <input type="button" class="btn-normal" value="Editar" name="editarAdministrador" id="editarAdministrador"
                         onclick="mostrarFormularioA('<?php echo $fila->AdmIdentificacion; ?>', '<?php echo $fila->AdmCorreo; ?>', '<?php echo $fila->AdmNombres; ?>', '<?php echo $fila->AdmApellidos; ?>')">
 
                         <!-- Eliminar Consultorio -->
-                        <input type="button" value="Eliminar" name="eliminarAdministrador" id="eliminarAdministrador"
+                        <input type="button" class="btn-rojo" value="Eliminar" name="eliminarAdministrador" id="eliminarAdministrador"
                         onclick="eliminarA('<?php echo $fila->AdmIdentificacion; ?>')">
                     </td>
                 </tr>

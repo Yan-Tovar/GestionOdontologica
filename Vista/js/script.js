@@ -60,6 +60,24 @@ $(document).ready(function(){
         }
     });
 });
+document.addEventListener("DOMContentLoaded", function () {
+    const elemento = document.getElementById("bienvenida");
+    const textoCompleto = elemento.textContent;
+    elemento.textContent = ""; // Borra el texto original
+
+    let i = 0;
+    const velocidad = 80; // milisegundos entre letras
+
+    function escribir() {
+        if (i < textoCompleto.length) {
+            elemento.textContent += textoCompleto.charAt(i);
+            i++;
+            setTimeout(escribir, velocidad);
+        }
+    }
+
+    escribir();
+});
 function consultarPaciente(){
     var url = "index.php?accion=consultarPaciente&documento=" +
     $("#asignarDocumento").val();

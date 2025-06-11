@@ -19,7 +19,7 @@ if(isset($value) && $_SESSION['rol'] == 'Administrador' || $_SESSION['rol'] == '
         <?php
             if($result->num_rows > 0){
         ?>
-        <table>
+        <table class="table">
             <tr>
                 <th>Documento</th><th>Nombre Completo</th><th>Sexo</th>
             </tr>
@@ -39,8 +39,27 @@ if(isset($value) && $_SESSION['rol'] == 'Administrador' || $_SESSION['rol'] == '
             }
             else {
         ?>
-        <p>El paciente no existe en la base de datos.</p>
-        <input type="button" name="ingPaciente" id="ingPaciente" value="IngresarPaciente" onclick="mostrarFormulario()">
+        <div id='noti' style='
+                            display: inline-flex;
+                            align-items: center;
+                            background-color: #d4edda;
+                            color:rgb(132, 155, 3);
+                            padding: 12px 18px;
+                            margin: 20px;
+                            border-radius: 25px;
+                            font-family:arial;
+                            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+                            border-left: 6px solid rgb(191, 241, 9);
+                            max-width: 400px;
+                            position: relative;'>
+                <i class='material-icons' 
+                    style='font-size: 16px;
+                    font-size: 22px;
+                    margin-right: 10px;
+                    color:rgb(233, 157, 17);'>info</i>
+            <p>El paciente no existe en la base de datos</p>
+        </div>
+           <button type="button" class="btn-verde" name="ingPaciente" id="ingPaciente" onclick="mostrarFormulario()"><i class="material-icons">add</i>Agregar</button>
         <?php
 }
 ?>

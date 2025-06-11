@@ -10,6 +10,9 @@ if(isset($value) && $_SESSION['rol'] == 'Administrador'){
     <title>Sistema de Gestión Odontológica</title>
     <link rel="stylesheet" type="text/css" href="Vista/css/estilos.css">
     <link href="Vista/jquery/jquery-ui-1.12.1.custom/jquery-ui.min.css" rel="stylesheet" type="text/css"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
     <script type="text/javascript" src="vista/jquery/jquery.js" ></script>
     <script src="Vista/js/script.js" type="text/javascript"></script>
     <script src="Vista/jquery/jquery-3.2.1.min.js" type="text/javascript"></script>
@@ -21,27 +24,28 @@ if(isset($value) && $_SESSION['rol'] == 'Administrador'){
         <h1>Sistema de Gestión Odontológica</h1>
     </div>
     <ul id="menu">
-        <li><a href="inicio">inicio</a> </li>
-        <li><a href="asignar" class="activa">Asignar</a> </li>
-        <li><a href="consultar">Consultar Cita</a> </li>
-        <li><a href="cancelar">Cancelar Cita</a> </li>
-        <li><a href="listarConsultorio">Consultorio</a></li>
-        <li><a href="listarMedicos">Medicos</a></li>        
-        <li><a href="listarAdministradores">Administradores</a></li>
-        <li><a href="descargarCitas">Excel Citas</a></li>
+        <li><a href="inicio"><i class="material-icons-outlined">home</i> inicio</a> </li>
+        <li><a href="asignar" class="activa"><i class="material-icons-outlined">assignment</i>Asignar</a> </li>
+        <li><a href="consultar"><i class="material-icons-outlined">search</i>Consultar Cita</a> </li>
+        <li><a href="cancelar"><i class="material-icons-outlined">cancel</i>Cancelar Cita</a> </li>
+        <li><a href="listarConsultorio"><i class="material-icons-outlined">apartment</i>Consultorio</a> </li>
+        <li><a href="listarMedicos"><i class="material-icons-outlined">group</i>Medicos</a> </li>        
+        <li><a href="listarAdministradores"><i class="material-icons-outlined">group_add</i>Administradores</a> </li>
+        <li><a href="descargarCitas"><i class="material-icons-outlined">table_view</i>Excel Citas</a></li>
     </ul>
-    </ul>
-    <div id="contenido">
+    <div class="contenido">
         <h2>Título de página</h2>
         <p>Contenido de la página</p>
-        <form id="frmasignar" action="index.php?accion=guardarCita" method="post">
-            <table>
+        <form id="frmasignar" action="guardarCita" method="post">
+            <table >
                 <tr>
                     <td>Documento del paciente</td>
                     <td><input type="text" name="asignarDocumento" id="asignarDocumento" required></td>
                 </tr>
                 <tr>
-                    <td colspan="2"><input type="button" value="Consultar" name="asignarConsultar" id="asignarConsultar" onclick="consultarPaciente()"></td>
+                    <td colspan="2">
+                            <button type="button" class="btn-normal" name="asignarConsultar" id="asignarConsultar" onclick="consultarPaciente()"><i class="material-icons">search</i>Consultar</button>
+                    </td>
                 </tr>
                 <tr>
                     <td colspan="2">
@@ -107,8 +111,11 @@ if(isset($value) && $_SESSION['rol'] == 'Administrador'){
                 </tr>
                 <tr>
                     <td colspan="2">
-                        <input type="submit" name="asignarEnviar" value="Enviar"
+                        <label class="btn-normal"><i class="material-icons">send</i>
+                            <input type="submit" class="btn-normal" name="asignarEnviar" value="Enviar"
                         id="asignarEnviar">
+                        </label>
+                        
                     </td>
                 </tr>
             </table>

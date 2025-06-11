@@ -75,7 +75,24 @@ public function agregarPaciente($cor, $con, $doc,$nom,$ape,$fec,$sex){
             $registros = $gestorCita->agregarPaciente($paciente);
             if($registros > 0){
                 echo "
-                <div id='noti' style='background-color: #33CCFF; padding: 10px; margin: 10px; border: 1px solid blue;'>
+                <div id='noti' style='
+                                display: inline-flex;
+                                align-items: center;
+                                background-color: #d4edda;
+                                color: #155724;
+                                padding: 12px 18px;
+                                margin: 20px;
+                                border-radius: 25px;
+                                font-family:arial;
+                                box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+                                border-left: 6px solid #28a745;
+                                max-width: 400px;
+                                position: relative;'>
+                    <i class='material-icons' 
+                        style='font-size: 16px;
+                        font-size: 22px;
+                        margin-right: 10px;
+                        color: #28a745;'>info</i>
                     Se insertó el paciente \"$nom\" con éxito
                 </div>
                 <script>
@@ -86,7 +103,24 @@ public function agregarPaciente($cor, $con, $doc,$nom,$ape,$fec,$sex){
                 ";
             } else {
                 echo "
-                <div id='noti' style='background-color:rgb(255, 51, 78); padding: 10px; margin: 10px; border: 1px solid blue;'>
+                <div id='noti' style='
+                                display: inline-flex;
+                                align-items: center;
+                                background-color: #d4edda;
+                                color:rgb(235, 54, 54);
+                                padding: 12px 18px;
+                                margin: 20px;
+                                border-radius: 25px;
+                                font-family:arial;
+                                box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+                                border-left: 6px solid rgb(241, 9, 9);
+                                max-width: 400px;
+                                position: relative;'>
+                    <i class='material-icons' 
+                        style='font-size: 16px;
+                        font-size: 22px;
+                        margin-right: 10px;
+                        color:rgb(233, 17, 17);'>info</i>
                     error al ingresar el paciente \"$nom\"
                 </div>
                 <script>
@@ -116,7 +150,24 @@ public function agregarM($doc,$cor,$con,$nom,$ape){
             $registros = $gestorUsuario->agregarMedico($medico);
             if($registros > 0){
                 echo "
-                <div id='noti' style='background-color: #33CCFF; padding: 10px; margin: 10px; border: 1px solid blue;'>
+                <div id='noti' style='
+                                display: inline-flex;
+                                align-items: center;
+                                background-color: #d4edda;
+                                color: #155724;
+                                padding: 12px 18px;
+                                margin: 20px;
+                                border-radius: 25px;
+                                font-family:arial;
+                                box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+                                border-left: 6px solid #28a745;
+                                max-width: 400px;
+                                position: relative;'>
+                    <i class='material-icons' 
+                        style='font-size: 16px;
+                        font-size: 22px;
+                        margin-right: 10px;
+                        color: #28a745;'>info</i>
                     Se insertó el médico \"$nom\" con éxito
                 </div>
                 <script>
@@ -128,7 +179,24 @@ public function agregarM($doc,$cor,$con,$nom,$ape){
                 require_once 'Vista/html/inicio.php';
             } else {
                 echo "
-                <div id='noti' style='background-color:rgb(255, 51, 78); padding: 10px; margin: 10px; border: 1px solid blue;'>
+                <div id='noti' style='
+                                display: inline-flex;
+                                align-items: center;
+                                background-color: #d4edda;
+                                color:rgb(235, 54, 54);
+                                padding: 12px 18px;
+                                margin: 20px;
+                                border-radius: 25px;
+                                font-family:arial;
+                                box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+                                border-left: 6px solid rgb(241, 9, 9);
+                                max-width: 400px;
+                                position: relative;'>
+                    <i class='material-icons' 
+                        style='font-size: 16px;
+                        font-size: 22px;
+                        margin-right: 10px;
+                        color:rgb(233, 17, 17);'>info</i>
                     error al ingresar el medico \"$nom\"
                 </div>
                 <script>
@@ -158,7 +226,24 @@ public function agregarA($doc,$cor,$con,$nom,$ape){
             $registros = $gestorUsuario->agregarAdministrador($administrador);
             if($registros > 0){
                 echo "
-                <div id='noti' style='background-color: #33CCFF; padding: 10px; margin: 10px; border: 1px solid blue;'>
+                <div id='noti' style='
+                                display: inline-flex;
+                                align-items: center;
+                                background-color: #d4edda;
+                                color: #155724;
+                                padding: 12px 18px;
+                                margin: 20px;
+                                border-radius: 25px;
+                                font-family:arial;
+                                box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+                                border-left: 6px solid #28a745;
+                                max-width: 400px;
+                                position: relative;'>
+                    <i class='material-icons' 
+                        style='font-size: 16px;
+                        font-size: 22px;
+                        margin-right: 10px;
+                        color: #28a745;'>info</i>
                     Se insertó el administrador \"$nom\" con éxito
                 </div>
                 <script>
@@ -170,7 +255,24 @@ public function agregarA($doc,$cor,$con,$nom,$ape){
                 require_once 'Vista/html/inicio.php';
             } else {
                 echo "
-                <div id='noti' style='background-color:rgb(255, 51, 78); padding: 10px; margin: 10px; border: 1px solid blue;'>
+                <div id='noti' style='
+                                display: inline-flex;
+                                align-items: center;
+                                background-color: #d4edda;
+                                color:rgb(235, 54, 54);
+                                padding: 12px 18px;
+                                margin: 20px;
+                                border-radius: 25px;
+                                font-family:arial;
+                                box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+                                border-left: 6px solid rgb(241, 9, 9);
+                                max-width: 400px;
+                                position: relative;'>
+                    <i class='material-icons' 
+                        style='font-size: 16px;
+                        font-size: 22px;
+                        margin-right: 10px;
+                        color:rgb(233, 17, 17);'>info</i>
                     error al ingresar el administrador \"$nom\"
                 </div>
                 <script>
@@ -324,7 +426,24 @@ public function agregarConsultorio($num,$nom){
             $registros = $gestorCita->agregarConsultorio($consultorio);
             if($registros > 0){
                 echo "
-                <div id='noti' style='background-color: #33CCFF; padding: 10px; margin: 10px; border: 1px solid blue;'>
+                <div id='noti' style='
+                                display: inline-flex;
+                                align-items: center;
+                                background-color: #d4edda;
+                                color: #155724;
+                                padding: 12px 18px;
+                                margin: 20px;
+                                border-radius: 25px;
+                                font-family:arial;
+                                box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+                                border-left: 6px solid #28a745;
+                                max-width: 400px;
+                                position: relative;'>
+                    <i class='material-icons' 
+                        style='font-size: 16px;
+                        font-size: 22px;
+                        margin-right: 10px;
+                        color: #28a745;'>info</i>
                     Se insertó el Consultorio \"$nom\" con éxito
                 </div>
                 <script>
@@ -335,7 +454,24 @@ public function agregarConsultorio($num,$nom){
                 ";
             } else {
                 echo "
-                <div id='noti' style='background-color:rgb(255, 51, 78); padding: 10px; margin: 10px; border: 1px solid blue;'>
+                <div id='noti' style='
+                                display: inline-flex;
+                                align-items: center;
+                                background-color: #d4edda;
+                                color:rgb(235, 54, 54);
+                                padding: 12px 18px;
+                                margin: 20px;
+                                border-radius: 25px;
+                                font-family:arial;
+                                box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+                                border-left: 6px solid rgb(241, 9, 9);
+                                max-width: 400px;
+                                position: relative;'>
+                    <i class='material-icons' 
+                        style='font-size: 16px;
+                        font-size: 22px;
+                        margin-right: 10px;
+                        color:rgb(233, 17, 17);'>info</i>
                     error al ingresar el Consultorio \"$nom\"
                 </div>
                 <script>

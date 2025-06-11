@@ -1,6 +1,6 @@
 <?php
 $value=$_SESSION['us_id'];
-if(isset($value) && $_SESSION['rol'] == 'Administrador'){
+if(isset($value) && $_SESSION['rol'] == 'Administrador' || $_SESSION['rol'] == 'Paciente' || $_SESSION['rol'] == 'Medico'){
 ?>
 
 <!DOCTYPE html>
@@ -9,6 +9,9 @@ if(isset($value) && $_SESSION['rol'] == 'Administrador'){
     <title></title>
     <link rel="stylesheet" type="text/css" href="/GestionOdontologica/Vista/css/estilos.css">
     <link href="/GestionOdontologica/Vista/jquery/jquery-ui-1.12.1.custom/jquery-ui.min.css" rel="stylesheet" type="text/css"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
     <script type="text/javascript" src="/GestionOdontologica/vista/jquery/jquery.js" ></script>
     <script src="/GestionOdontologica/Vista/js/script.js" type="text/javascript"></script>
     <script src="/GestionOdontologica/Vista/jquery/jquery-3.2.1.min.js" type="text/javascript"></script>
@@ -37,27 +40,28 @@ if(isset($value) && $_SESSION['rol'] == 'Administrador'){
         if($_SESSION["rol"] == "Paciente"){
             echo "
             <ul id='menu'>
-                <li><a href='/GestionOdontologica/Pinicio'>inicio</a> </li>
-                <li><a href='/GestionOdontologica/verCitas' class='activa'>Citas</a></li>
-                <li><a href='/GestionOdontologica/verTratamientos'>Tratamientos</a></li>
+                <li><a href='/GestionOdontologica/Pinicio' class='activa'><i class='material-icons-outlined'>home</i> inicio</a> </li>
+                <li><a href='/GestionOdontologica/verCitas'><i class='material-icons-outlined'>plagiarism</i> Citas</a> </li>
+                <li><a href='/GestionOdontologica/PcancelarCita'><i class='material-icons-outlined'>cancel</i> Cancelar Cita</a> </li>
+                <li><a href='/GestionOdontologica/verTratamientos'><i class='material-icons-outlined'>assignment</i> Tratamientos</a></li>
             </ul> ";
         }elseif($_SESSION["rol"] == "Medico"){
             echo "
             <ul id='menu'>
-                <li><a href='/GestionOdontologica/Minicio'>inicio</a> </li>
-                <li><a href='/GestionOdontologica/MverCitas' class='activa'>Citas</a></li>
+                <li><a href='/GestionOdontologica/Minicio' class='activa'><i class='material-icons-outlined'>home</i>inicio</a> </li>
+                <li><a href='/GestionOdontologica/MverCitas'><i class='material-icons-outlined'>assignment</i>Citas</a> </li>
             </ul> ";
         }else{
             echo "
             <ul id='menu'>
-                <li><a href='/GestionOdontologica/inicio'>inicio</a> </li>
-                <li><a href='/GestionOdontologica/asignar'>Asignar</a> </li>
-                <li><a href='/GestionOdontologica/consultar' class='activa'>Consultar Cita</a> </li>
-                <li><a href='/GestionOdontologica/cancelar'>Cancelar Cita</a> </li>
-                <li><a href='/GestionOdontologica/listarConsultorio'>Consultorio</a></li>
-                <li><a href='/GestionOdontologica/listarMedicos'>Medicos</a></li>        
-                <li><a href='/GestionOdontologica/listarAdministradores'>Administradores</a></li>
-                <li><a href='/GestionOdontologica/descargarCitas'>Excel Citas</a></li>
+                <li><a href='/GestionOdontologica/inicio' class='activa'><i class='material-icons-outlined'>home</i> inicio</a> </li>
+                <li><a href='/GestionOdontologica/asignar'><i class='material-icons-outlined'>assignment</i>Asignar</a> </li>
+                <li><a href='/GestionOdontologica/consultar'><i class='material-icons-outlined'>search</i>Consultar Cita</a> </li>
+                <li><a href='/GestionOdontologica/cancelar'><i class='material-icons-outlined'>cancel</i>Cancelar Cita</a> </li>
+                <li><a href='/GestionOdontologica/listarConsultorio'><i class='material-icons-outlined'>apartment</i>Consultorio</a> </li>
+                <li><a href='/GestionOdontologica/listarMedicos'><i class='material-icons-outlined'>group</i>Medicos</a> </li>        
+                <li><a href='/GestionOdontologica/listarAdministradores'><i class='material-icons-outlined'>group_add</i>Administradores</a> </li>
+                <li><a href='/GestionOdontologica/descargarCitas'><i class='material-icons-outlined'>table_view</i>Excel Citas</a></li>
             </ul> ";
         }
         ?>
@@ -69,12 +73,12 @@ if(isset($value) && $_SESSION['rol'] == 'Administrador'){
                     <form action='/GestionOdontologica/asignarTratamientos' method='post'>
                         <input type='hidden' value='<?php echo $pacDocumento; ?>' id='pacienteDoc' name='pacienteDoc'>
                         <input type='hidden' value='<?php echo $citaNumero; ?>' id='citaNumero' name='citaNumero'>
-                        <input type='submit' value='Asignar Tratamiento'>
+                        <input type='submit' class="btn-verde" value='Asignar Tratamiento'>
                     </form>
                     <?php
                 }
                 ?>
-                <table>
+                <table class="table">
                     <tr>
                         <th colspan="2">Datos del Paciente</th>
                     </tr>
@@ -139,14 +143,14 @@ if(isset($value) && $_SESSION['rol'] == 'Administrador'){
                         id='consultarDocumento' value='<?php echo $pacDocumento;?>'></td>
                     </tr>
                     <tr> 
-                        <input type='button' name='consultarConsultar' value='Ver Historial' id='consultarConsultar' onclick='consultarTratamientos()'>
+                        <input type='button' class="btn-normal" name='consultarConsultar' value='Ver Historial' id='consultarConsultar' onclick='consultarTratamientos()'>
                     </tr>
                     <tr>
                         <td colspan='2'><div id='paciente2'></div></td>
                     </tr>
                 </table>
             </div>
-        </div>";
+        </div>
         <?php
         }
         ?>

@@ -8,6 +8,9 @@ if (isset($value) && $_SESSION['rol'] == 'Medico'){
     <title>Sistema de Gestión Odontológica</title>
     <link rel="stylesheet" type="text/css" href="Vista/css/estilos.css">
     <link href="Vista/jquery/jquery-ui-1.12.1.custom/jquery-ui.min.css" rel="stylesheet" type="text/css"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
     <script type="text/javascript" src="vista/jquery/jquery.js" ></script>
     <script src="Vista/js/script.js" type="text/javascript"></script>
     <script src="Vista/jquery/jquery-3.2.1.min.js" type="text/javascript"></script>
@@ -19,10 +22,10 @@ if (isset($value) && $_SESSION['rol'] == 'Medico'){
         <h1>Sistema de Gestión Odontológica</h1>
     </div>
     <ul id="menu">
-        <li><a href="Minicio">inicio</a> </li>
-        <li><a href="MverCitas">Citas</a> </li>
+        <li><a href="Minicio"><i class="material-icons-outlined">home</i>inicio</a> </li>
+        <li><a href="MverCitas" class="activa"><i class="material-icons-outlined">assignment</i>Citas</a> </li>
     </ul>
-    <div id="contenido">
+    <div class="contenido">
         <h2>Asignar Tratamiento</h2>
         <form id="frmasignar" action="index.php?accion=guardarTratamiento" method="post">
             <table>

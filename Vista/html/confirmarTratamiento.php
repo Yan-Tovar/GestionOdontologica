@@ -2,7 +2,15 @@
 <html>
 <head>
     <title></title>
-    <link rel="stylesheet" type="text/css" href="Vista/css/estilos.css">
+    <link rel="stylesheet" type="text/css" href="/GestionOdontologica/Vista/css/estilos.css">
+    <link href="/GestionOdontologica/Vista/jquery/jquery-ui-1.12.1.custom/jquery-ui.min.css" rel="stylesheet" type="text/css"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <script type="text/javascript" src="/GestionOdontologica/vista/jquery/jquery.js" ></script>
+    <script src="/GestionOdontologica/Vista/js/script.js" type="text/javascript"></script>
+    <script src="/GestionOdontologica/Vista/jquery/jquery-3.2.1.min.js" type="text/javascript"></script>
+    <script src="/GestionOdontologica/Vista/jquery/jquery-ui-1.12.1.custom/jquery-ui.js" type="text/javascript"></script>
 </head>
 <body>
     <div id="contenedor">
@@ -13,35 +21,35 @@
         if($_SESSION["rol"] == "Paciente"){
             echo "
             <ul id='menu'>
-                <li><a href='index.php?accion=Pinicio' class='activa'>inicio</a> </li>
-                <li><a href='index.php?accion=verCitas'>Citas</a></li>
-                <li><a href='index.php?accion=verTratamientos'>Tratamientos</a></li>
+                <li><a href='Pinicio'><i class='material-icons-outlined'>home</i> inicio</a> </li>
+                <li><a href='verCitas'><i class='material-icons-outlined'>plagiarism</i> Citas</a> </li>
+                <li><a href='PcancelarCita'><i class='material-icons-outlined'>cancel</i> Cancelar Cita</a> </li>
+                <li><a href='verTratamientos' class='activa'><i class='material-icons-outlined'>assignment</i> Tratamientos</a></li>
             </ul> ";
         }elseif($_SESSION["rol"] == "Medico"){
             echo "
             <ul id='menu'>
-                <li><a href='index.php?accion=Minicio' class='activa'>inicio</a> </li>
-                <li><a href='index.php?accion=MverCitas'>Citas</a></li>
-                <li><a href='index.php?accion=asignarTratamientos'>Tratamientos</a></li>
+                <li><a href='Minicio'><i class='material-icons-outlined'>home</i>inicio</a> </li>
+                <li><a href='MverCitas' class='activa'><i class='material-icons-outlined'>assignment</i>Citas</a> </li>
             </ul> ";
         }else{
             echo "
             <ul id='menu'>
-                <li><a href='inicio' class='activa'>inicio</a> </li>
-                <li><a href='asignar'>Asignar</a> </li>
-                <li><a href='consultar'>Consultar Cita</a> </li>
-                <li><a href='cancelar'>Cancelar Cita</a> </li>
-                <li><a href='listarConsultorio'>Consultorio</a></li>
-                <li><a href='listarMedicos'>Medicos</a></li>        
-                <li><a href='listarAdministradores'>Administradores</a></li>
-                <li><a href='descargarCitas'>Excel Citas</a></li>
+                <li><a href='inicio'><i class='material-icons-outlined'>home</i> inicio</a> </li>
+                <li><a href='asignar' class='activa'><i class='material-icons-outlined'>assignment</i>Asignar</a> </li>
+                <li><a href='consultar'><i class='material-icons-outlined'>search</i>Consultar Cita</a> </li>
+                <li><a href='cancelar'><i class='material-icons-outlined'>cancel</i>Cancelar Cita</a> </li>
+                <li><a href='listarConsultorio'><i class='material-icons-outlined'>apartment</i>Consultorio</a> </li>
+                <li><a href='listarMedicos'><i class='material-icons-outlined'>group</i>Medicos</a> </li>        
+                <li><a href='listarAdministradores'><i class='material-icons-outlined'>group_add</i>Administradores</a> </li>
+                <li><a href='descargarCitas'><i class='material-icons-outlined'>table_view</i>Excel Citas</a></li>
             </ul> ";
         }
         ?>
         <div id="contenido">
             <?php $fila = $result->fetch_object();?>
             <h2>Información Tratamiento</h2>
-            <table>
+            <table class="table">
                 <tr>
                     <th colspan="2">Datos del Paciente</th>
                 </tr>

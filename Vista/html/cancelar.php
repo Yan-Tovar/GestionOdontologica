@@ -9,6 +9,9 @@ if(isset($value) && $_SESSION['rol'] == 'Administrador'){
     <title>Sistema de Gestión Odontológica</title>
     <link rel="stylesheet" type="text/css" href="Vista/css/estilos.css">
     <link href="Vista/jquery/jquery-ui-1.12.1.custom/jquery-ui.min.css" rel="stylesheet" type="text/css"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
     <script type="text/javascript" src="vista/jquery/jquery.js" ></script>
     <script src="Vista/js/script.js" type="text/javascript"></script>
     <script src="Vista/jquery/jquery-3.2.1.min.js" type="text/javascript"></script>
@@ -20,38 +23,36 @@ if(isset($value) && $_SESSION['rol'] == 'Administrador'){
         <h1>Cancelar Cita</h1>
     </div>
     <ul id="menu">
-        <li><a href="inicio">inicio</a> </li>
-        <li><a href="asignar">Asignar</a> </li>
-        <li><a href="consultar">Consultar Cita</a> </li>
-        <li><a href="cancelar" class="activa">Cancelar Cita</a> </li>
-        <li><a href="listarConsultorio">Consultorio</a></li>
-        <li><a href="listarMedicos">Medicos</a></li>        
-        <li><a href="listarAdministradores">Administradores</a></li>
-        <li><a href="descargarCitas">Excel Citas</a></li>
+        <li><a href="inicio"><i class="material-icons-outlined">home</i> inicio</a> </li>
+        <li><a href="asignar"><i class="material-icons-outlined">assignment</i>Asignar</a> </li>
+        <li><a href="consultar"><i class="material-icons-outlined">search</i>Consultar Cita</a> </li>
+        <li><a href="cancelar" class="activa"><i class="material-icons-outlined">cancel</i>Cancelar Cita</a> </li>
+        <li><a href="listarConsultorio"><i class="material-icons-outlined">apartment</i>Consultorio</a> </li>
+        <li><a href="listarMedicos"><i class="material-icons-outlined">group</i>Medicos</a> </li>        
+        <li><a href="listarAdministradores"><i class="material-icons-outlined">group_add</i>Administradores</a> </li>
+        <li><a href="descargarCitas"><i class="material-icons-outlined">table_view</i>Excel Citas</a></li>
     </ul>
-    <div id="contenido">
-        <div id="contenido">
-            <h2>Cancelar Cita</h2>
-            <form action="index.php?accion=cancelarCita" method="post"
-                id="frmcancelar">
-                <table>
-                    <tr>
-                        <td>Documento del Paciente </td>
+    <div class="contenido">
+        <h2>Cancelar Cita</h2>
+        <form action="index.php?accion=cancelarCita" method="post"
+            id="frmcancelar">
+            <table>
+                <tr>
+                    <td>Documento del Paciente </td>
 
-                        <td><input type="text" name="cancelarDocumento"
+                    <td><input type="text" name="cancelarDocumento"
 
-                        id="cancelarDocumento"required></td>
+                    id="cancelarDocumento"required></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><input type="button" class="btn-normal" value="Consultar" 
+                    onclick="cancelarCita()"></td>
                     </tr>
-                    <tr>
-                        <td colspan="2"><input type="button" value="Consultar" 
-                        onclick="cancelarCita()"></td>
-                        </tr>
-                    <tr>
-                        <td colspan="2"><div id="paciente3"></div></td>
-                    </tr>
-                </table>
-            </form>
-        </div>
+                <tr>
+                    <td colspan="2"><div id="paciente3"></div></td>
+                </tr>
+            </table>
+        </form>
     </div>
     </div>
 </body>
