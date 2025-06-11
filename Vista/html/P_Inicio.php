@@ -25,7 +25,7 @@ if(isset($value) && $_SESSION['rol'] == 'Paciente'){
         </div>
     <div id="encabezado">
         <br>
-        <h3 id="bienvenida">Bienvenido <?php echo $_SESSION["us_nom"]; ?></h3>
+        <h3 id="bienvenida"> Bienvenido <?php echo $_SESSION["us_nom"]; ?></h3>
         <h1>Sistema de Gestión Odontológica</h1>
     </div>
     <ul id="menu">

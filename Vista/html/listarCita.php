@@ -40,22 +40,22 @@ if(isset($value) && $_SESSION['rol'] == 'Administrador' || $_SESSION['rol'] == '
         if($_SESSION["rol"] == "Paciente"){
             echo "
             <ul id='menu'>
-                <li><a href='/GestionOdontologica/Pinicio' class='activa'><i class='material-icons-outlined'>home</i> inicio</a> </li>
-                <li><a href='/GestionOdontologica/verCitas'><i class='material-icons-outlined'>plagiarism</i> Citas</a> </li>
+                <li><a href='/GestionOdontologica/Pinicio'><i class='material-icons-outlined'>home</i> inicio</a> </li>
+                <li><a href='/GestionOdontologica/verCitas' class='activa'><i class='material-icons-outlined'>plagiarism</i> Citas</a> </li>
                 <li><a href='/GestionOdontologica/PcancelarCita'><i class='material-icons-outlined'>cancel</i> Cancelar Cita</a> </li>
                 <li><a href='/GestionOdontologica/verTratamientos'><i class='material-icons-outlined'>assignment</i> Tratamientos</a></li>
             </ul> ";
         }elseif($_SESSION["rol"] == "Medico"){
             echo "
             <ul id='menu'>
-                <li><a href='/GestionOdontologica/Minicio' class='activa'><i class='material-icons-outlined'>home</i>inicio</a> </li>
-                <li><a href='/GestionOdontologica/MverCitas'><i class='material-icons-outlined'>assignment</i>Citas</a> </li>
+                <li><a href='/GestionOdontologica/Minicio'><i class='material-icons-outlined'>home</i>inicio</a> </li>
+                <li><a href='/GestionOdontologica/MverCitas' class='activa'><i class='material-icons-outlined'>assignment</i>Citas</a> </li>
             </ul> ";
         }else{
             echo "
             <ul id='menu'>
-                <li><a href='/GestionOdontologica/inicio' class='activa'><i class='material-icons-outlined'>home</i> inicio</a> </li>
-                <li><a href='/GestionOdontologica/asignar'><i class='material-icons-outlined'>assignment</i>Asignar</a> </li>
+                <li><a href='/GestionOdontologica/inicio'><i class='material-icons-outlined'>home</i> inicio</a> </li>
+                <li><a href='/GestionOdontologica/asignar' class='activa'><i class='material-icons-outlined'>assignment</i>Asignar</a> </li>
                 <li><a href='/GestionOdontologica/consultar'><i class='material-icons-outlined'>search</i>Consultar Cita</a> </li>
                 <li><a href='/GestionOdontologica/cancelar'><i class='material-icons-outlined'>cancel</i>Cancelar Cita</a> </li>
                 <li><a href='/GestionOdontologica/listarConsultorio'><i class='material-icons-outlined'>apartment</i>Consultorio</a> </li>
@@ -65,7 +65,7 @@ if(isset($value) && $_SESSION['rol'] == 'Administrador' || $_SESSION['rol'] == '
             </ul> ";
         }
         ?>
-        <div id="contenido">
+        <div class="contenido">
                 <h2>Información Cita</h2>
                 <?php
                 if($_SESSION['rol']=="Administrador" || $_SESSION['rol']=="Medico"){
@@ -129,28 +129,26 @@ if(isset($value) && $_SESSION['rol'] == 'Administrador' || $_SESSION['rol'] == '
                         <td><?php echo $observaciones;?></td>
                     
                 </table>
+                <?php
+                if($_SESSION["rol"] != "Paciente"){
+                    ?>
+                    <div id='contenido'>
+                    
+                        <h2>Historial de Tratamientos</h2>
+                        <table>
+                            <tr>
+                                <td><input type='hidden' name='consultarDocumento'
+                                id='consultarDocumento' value='<?php echo $pacDocumento;?>'></td>
+                            </tr>
+                            <tr> 
+                                <input type='button' class="btn-normal" name='consultarConsultar' value='Ver Historial' id='consultarConsultar' onclick='consultarTratamientos()'>
+                            </tr>
+                            <tr>
+                                <td colspan='2'><div id='paciente2'></div></td>
+                            </tr>
+                        </table>
+                    </div>
             </div>
-        <?php
-        if($_SESSION["rol"] != "Paciente"){
-            ?>
-            <div class='contenedor_v2'>
-            <div id='contenido'>
-              
-                <h2>Historial de Tratamientos</h2>
-                <table>
-                    <tr>
-                        <td><input type='hidden' name='consultarDocumento'
-                        id='consultarDocumento' value='<?php echo $pacDocumento;?>'></td>
-                    </tr>
-                    <tr> 
-                        <input type='button' class="btn-normal" name='consultarConsultar' value='Ver Historial' id='consultarConsultar' onclick='consultarTratamientos()'>
-                    </tr>
-                    <tr>
-                        <td colspan='2'><div id='paciente2'></div></td>
-                    </tr>
-                </table>
-            </div>
-        </div>
         <?php
         }
         ?>

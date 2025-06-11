@@ -20,7 +20,7 @@
 <?php
     if($result->num_rows > 0){
     ?>
-    <table>
+    <table class="table">
         <tr>
             <th>Numero </th><th>Fecha Asignación </th>
             <th>Descripcion </th><th>Fecha Inicio </th>

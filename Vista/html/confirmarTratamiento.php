@@ -46,7 +46,7 @@
             </ul> ";
         }
         ?>
-        <div id="contenido">
+        <div class="contenido">
             <?php $fila = $result->fetch_object();?>
             <h2>Información Tratamiento</h2>
             <table class="table">

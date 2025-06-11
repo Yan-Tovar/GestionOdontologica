@@ -18,59 +18,33 @@ if(isset($value) && $_SESSION['rol'] == 'Administrador'){
 </head>
 <body>
     <div id="contenedor">
-        <div class="contenedorSesion">
-            <a href="cerrarSesion"> 
-                <button class="btn-rojo">Cerrar Sesion<i class="material-icons">logout</i></button>
-            </a>
-        </div>
     <div id="encabezado">
         <br>
-        <h3 id="bienvenida"> Bienvenido <?php echo $_SESSION["us_nom"]; ?></h3>
-        <h1>Sistema de Gestión Odontológica</h1>
+        <h1><i class="material-icons" style="font-size: 50px;vertical-align: middle;">equalizer</i> Estadisticas y Consultas Generales</h1>
     </div>
     <ul id="menu">
-        <li><a href="inicio" class="activa"><i class="material-icons-outlined">home</i> inicio</a> </li>
+        <li><a href="inicio"><i class="material-icons-outlined">home</i> inicio</a> </li>
         <li><a href="asignar"><i class="material-icons-outlined">assignment</i>Asignar</a> </li>
         <li><a href="consultar"><i class="material-icons-outlined">search</i>Consultar Cita</a> </li>
         <li><a href="cancelar"><i class="material-icons-outlined">cancel</i>Cancelar Cita</a> </li>
         <li><a href="listarConsultorio"><i class="material-icons-outlined">apartment</i>Consultorio</a> </li>
         <li><a href="listarMedicos"><i class="material-icons-outlined">group</i>Medicos</a> </li>        
         <li><a href="listarAdministradores"><i class="material-icons-outlined">group_add</i>Administradores</a> </li>
-        <li><a href="estadisticas"><i class="material-icons-outlined">equalizer</i>Estadísticas</a> </li>
+        <li><a href="estadisticas" class="activa"><i class="material-icons-outlined">equalizer</i>Estadísticas</a> </li>
         <li><a href="descargarCitas"><i class="material-icons-outlined">table_view</i>Excel Citas</a></li>
     </ul>
-    <div class="contenido">
-        <h2>Información General</h2>
-        <p>El Sistema de Gestión Odontológica permite administrar la información de los
-    pacientes,
-                tratamientos y citas a través de una interfaz web.</p>
-        <p>El sistema cuenta con las siguientes secciones:
-            <ul>
-                <li>Asignar cita</li>
-                <li>Consultar cita</li>
-                <li>Cancelar cita</li>
-                <li>Administrar Consultorios</li>
-                <li>Administrar Tratamientos</li>
-            </ul>
-        </p>
-        <div class="botonesAccion">
-            <table>
-                <tr>
-                    <td>
-                        <a href="registrarFuncionario">
-                            <button class="btn-normal">
-                                Registrar Funcionario<i class="material-icons">person_add</i>
-                            </button>
-                        </a>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2">
-                        <div id="paciente"></div>
-                    </td>
-                </tr>
-            </table>
-        </div>
+    <div class="contenedorSesion">
+        <button class="btn-normal" onclick="consultarUsuariosT()" id="consultarConsultar">
+            <i class="material-icons">groups</i>
+            Usuarios Totales
+        </button>
+        <button class="btn-normal" onclick="consultarCitaA()" id="consultarConsultar">
+            <i class="material-icons">event</i>
+            Citas
+        </button>
+    </div>
+    <div id="resultado">
+        <!-- Resultados aquí -->
     </div>
     </div>
 </body>

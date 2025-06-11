@@ -57,6 +57,9 @@ elseif($_GET["accion"] == "MverCitas"){
 elseif($_GET["accion"] == "verTratamientos"){
     $controlador->verPagina('Vista/html/P_verTratamientos.php');
 }
+elseif($_GET["accion"] == "estadisticas"){
+    $controlador->verPagina('Vista/html/estadisticas.php');
+}
 elseif($_GET["accion"] == "asignarTratamientos"){
     if(isset($_POST['pacienteDoc'])){
         $Id=$_POST['pacienteDoc'];
@@ -152,6 +155,9 @@ elseif($_GET["accion"] == "descargarCitas"){
 }
 elseif($_GET["accion"] == "consultarCitaMedico"){
     $controlador->consultarCitasMedico($_GET["consultarDocumento"]);
+}
+elseif($_GET["accion"] == "consultarUsuariosT"){
+    $controlador->consultarUsuariosTotales();
 }
 elseif($_GET["accion"] == "consultarTratamientos"){
     $controlador->consultarTratamiento($_GET["consultarDocumento"]);

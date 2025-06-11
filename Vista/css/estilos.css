@@ -45,7 +45,7 @@ input[type="number"]:focus {
   box-shadow: 0 0 5px rgba(0, 117, 255, 0.3);
 }
 .table {
-    width: 100%;
+    max-width: 100%;
     border-collapse: collapse;
     margin: 20px 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -111,9 +111,11 @@ input[type="number"]:focus {
 }
 /* Contenido de información*/
 .contenido {
+    position: fixed;
     border: #00000057 dotted 2px;
-    max-width: 100%;
-    min-height: 350px;
+    width: 70%;
+    min-height: 300px;
+    max-height: 300px;
     overflow-y: auto;
     margin: 50px;
     padding: 20px;

@@ -130,6 +130,10 @@ function consultarCitaM(){
     $("#consultarDocumento").val() ;
     $("#paciente2").load(url);
 }
+function consultarUsuariosT(){
+    url = "index.php?accion=consultarUsuariosT";
+    $("#resultado").load(url);
+}
 function consultarTratamientos(){
     url = "/GestionOdontologica/index.php?accion=consultarTratamientos&consultarDocumento=" +
     $("#consultarDocumento").val() ;

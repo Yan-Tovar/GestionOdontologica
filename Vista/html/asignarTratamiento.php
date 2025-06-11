@@ -47,7 +47,7 @@ if(isset($value)){
     <div id="contenido">
         <h2>Asignar Tratamiento</h2>
         <form id="frmasignar" action="guardarTratamiento" method="post">
-            <table>
+            <table class="table">
 
                 <?php if(isset($IdCit)){
                 ?>

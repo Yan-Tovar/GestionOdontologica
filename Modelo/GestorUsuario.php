@@ -137,6 +137,19 @@ public function listarAdministradores(){
         $conexion->cerrar();
         return $result ;
 }
+public function consultarUsuariosTotales(){
+        $conexion = new Conexion();
+        $conexion->abrir();
+        $sql = "SELECT 'Pacientes' as Tipo, COUNT(*) as Cantidad FROM Pacientes
+        UNION ALL
+        SELECT 'Medicos', COUNT(*) FROM Medicos
+        UNION ALL
+        SELECT 'Administradores', COUNT(*) FROM Administradores; ";
+        $conexion->consulta($sql);
+        $result = $conexion->obtenerResult();
+        $conexion->cerrar();
+        return $result ;
+}
 public function editarMedico($doc, $cor, $nom, $ape){
     $conexion = new Conexion();
     $conexion->abrir();

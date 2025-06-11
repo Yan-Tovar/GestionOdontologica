@@ -335,6 +335,11 @@ public function agregarTratamiento($CitNumero, $fechaA,$des,$fechaI,$fechaF, $ob
     }
     
 }
+public function consultarUsuariosTotales(){
+    $gestorUsuario = new GestorUsuario();
+    $result = $gestorUsuario->consultarUsuariosTotales();
+    require_once 'Vista/html/listarUsuariosTotales.php';
+}
 public function consultarCitas($doc){
     $gestorCita = new GestorCita();
     $result = $gestorCita->consultarCitasPorDocumento($doc);

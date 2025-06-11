@@ -9,7 +9,7 @@
 <body class="body2">
     <br><br><br>
     <br>
-    <form action="index.php?accion=iniciarSesion" method="post" class="form">
+    <form action="iniciarSesion" method="post" class="form">
         <label for="correo">Ingrese su correo:</label><br>
         <input type="email" name="correo" id="correo" required placeholder="ejemplo@gmail.com"><br>
 
